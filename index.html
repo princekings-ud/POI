@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pastor (Dr.) Osagie Ize-Iyamu — Senate 2027 · Edo South</title>
+<meta name="description" content="The official campaign website of Pastor (Dr.) Osagie Ize-Iyamu. Leadership. Service. Vision for Edo." />
+<link rel="icon" type="image/png" href="apc logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<style>
+:root {
+  --green:       #1A5C38;
+  --green-deep:  #0D3D24;
+  --green-mid:   #1E6B41;
+  --gold:        #C9A84C;
+  --gold-warm:   #E8C66A;
+  --gold-pale:   #F5DFA0;
+  --ivory:       #F9F7F2;
+  --ivory-2:     #F0EDE6;
+  --charcoal:    #2D2D2D;
+  --grey:        #6B6B6B;
+  --light-grey:  #E8E8E8;
+  --white:       #FFFFFF;
+  --line:        rgba(0,0,0,0.09);
+  --line-m:      rgba(0,0,0,0.16);
+  --txt-1:       rgba(0,0,0,0.88);
+  --txt-2:       rgba(0,0,0,0.55);
+  --txt-3:       rgba(0,0,0,0.35);
+  --serif:       'Playfair Display','Times New Roman',serif;
+  --sans:        'Inter',system-ui,sans-serif;
+  --gold-grad:   linear-gradient(135deg,#B8942A 0%,#C9A84C 50%,#E8C66A 100%);
+  --green-grad:  linear-gradient(135deg,#0D3D24 0%,#1A5C38 60%,#0D3D24 100%);
+  --ease-out:    cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--ivory);color:var(--txt-1);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+ul{list-style:none}
+.container{max-width:1280px;margin:0 auto;padding:0 16px}
+
+/* Labels */
+.lbl{display:inline-flex;align-items:center;gap:12px;font-size:11px;letter-spacing:0.28em;text-transform:uppercase;font-weight:600;color:var(--gold);margin-bottom:14px}
+.lbl::before{content:"";display:inline-block;width:30px;height:1.5px;background:var(--gold-grad);flex-shrink:0}
+.lbl.on-light{color:var(--green)}
+.lbl.on-light::before{background:var(--green)}
+.lbl.on-dark{color:var(--gold-warm)}
+.lbl.on-dark::before{background:var(--gold-warm)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-size:13px;letter-spacing:0.04em;font-weight:600;padding:14px 26px;cursor:pointer;border:none;border-radius:3px;transition:transform 0.25s var(--ease-out),box-shadow 0.25s,background 0.2s,color 0.2s,border-color 0.2s}
+.btn-primary{background:var(--green);color:var(--white);border:2px solid var(--green)}
+.btn-primary:hover{background:var(--green-deep);border-color:var(--green-deep);transform:translateY(-2px);box-shadow:0 14px 32px -14px rgba(13,61,36,0.5)}
+.btn-gold{background:var(--gold-grad);color:var(--green-deep);font-weight:700;border:none}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 14px 32px -14px rgba(201,168,76,0.55)}
+.btn-outline{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,0.35)}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold-warm)}
+.btn-outline-green{background:transparent;color:var(--green);border:2px solid var(--green)}
+.btn-outline-green:hover{background:var(--green);color:var(--white)}
+.btn-white{background:var(--white);color:var(--green);border:none}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 14px 32px -14px rgba(0,0,0,0.18)}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity 0.75s var(--ease-out),transform 0.75s var(--ease-out)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.2s}
+.reveal-delay-3{transition-delay:0.3s}
+.reveal-delay-4{transition-delay:0.4s}
+.reveal-delay-5{transition-delay:0.5s}
+
+/* ─── NAV ─── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 16px;display:flex;align-items:center;justify-content:space-between;background:transparent;transition:background 0.4s ease,padding 0.3s ease,box-shadow 0.3s ease}
+.nav.scrolled{background:var(--green-deep);box-shadow:0 2px 28px rgba(0,0,0,0.28);padding:10px 16px}
+.nav-brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.nav-party-logo{width:36px;height:36px;object-fit:contain}
+.nav-wordmark{display:flex;flex-direction:column;line-height:1}
+.nav-wordmark .name{font-family:var(--serif);font-weight:700;font-size:13px;letter-spacing:0.04em;color:var(--white)}
+.nav-wordmark .tag{font-size:8px;letter-spacing:0.3em;color:var(--gold);margin-top:4px;text-transform:uppercase;font-weight:500}
+.nav-links{display:none;gap:26px;align-items:center}
+.nav-links a{font-size:12.5px;letter-spacing:0.02em;color:rgba(255,255,255,0.72);transition:color 0.2s;position:relative;padding-bottom:3px;font-weight:500}
+.nav-links a::after{content:"";position:absolute;bottom:-1px;left:0;right:0;height:1.5px;background:var(--gold-grad);transform:scaleX(0);transform-origin:left;transition:transform 0.25s var(--ease-out)}
+.nav-links a:hover{color:var(--gold-warm)}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+.nav-links a.active{color:var(--gold)}
+.nav-cta-desktop{display:none;align-items:center;font-size:12px;letter-spacing:0.06em;font-weight:700;padding:10px 22px;background:var(--gold-grad);color:var(--green-deep);border-radius:3px;margin-left:8px;transition:transform 0.2s,box-shadow 0.2s;cursor:pointer}
+.nav-cta-desktop:hover{transform:translateY(-1px);box-shadow:0 10px 24px -12px rgba(201,168,76,0.65)}
+.nav-burger{display:flex;flex-direction:column;gap:5px;width:32px;padding:4px 0;cursor:pointer}
+.nav-burger span{display:block;width:100%;height:1.5px;background:rgba(255,255,255,0.88);transition:transform 0.3s,opacity 0.3s}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:99;background:var(--green-deep);flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;transition:opacity 0.35s ease}
+.mobile-menu.open{display:flex;opacity:1}
+.mobile-menu::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(201,168,76,0.035) 0 1px,transparent 1px 44px);pointer-events:none}
+.mobile-menu a,.mobile-menu button{font-family:var(--serif);font-size:30px;letter-spacing:0.04em;color:rgba(255,255,255,0.88);transition:color 0.2s;position:relative;z-index:1}
+.mobile-menu a:hover,.mobile-menu button:hover{color:var(--gold-warm)}
+.mobile-menu .mobile-cta{font-family:var(--sans);font-size:13px;letter-spacing:0.08em;font-weight:700;padding:15px 40px;background:var(--gold-grad);color:var(--green-deep);border-radius:3px;margin-top:8px}
+
+/* ─── HERO ─── */
+.hero{position:relative;min-height:100vh;overflow:hidden;display:flex;align-items:center;background:var(--green-deep)}
+.hero-bg{position:absolute;inset:0;z-index:0;background:var(--green-deep) center/cover no-repeat}
+.hero-bg::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,61,36,0.72) 0%,rgba(13,61,36,0.28) 42%,rgba(13,61,36,0.55) 68%,rgba(13,61,36,0.97) 100%)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0.30) 0%,transparent 35%,rgba(0,0,0,0.38) 100%)}
+.hero-pattern{position:absolute;inset:0;z-index:1;background:repeating-linear-gradient(120deg,rgba(201,168,76,0.028) 0 1px,transparent 1px 38px);pointer-events:none}
+.hero-content{position:relative;z-index:3;padding:120px 0 130px;width:100%}
+.hero-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:22px;opacity:0;animation:fadeUp 0.9s var(--ease-out) 0.2s forwards;flex-wrap:wrap}
+.hero-apc-badge{display:flex;align-items:center;gap:8px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.30);padding:5px 14px;border-radius:2px}
+.hero-apc-badge img{width:22px;height:22px;object-fit:contain}
+.hero-apc-badge span{font-size:10px;letter-spacing:0.24em;text-transform:uppercase;font-weight:600;color:var(--gold-warm)}
+.hero-senate-lbl{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.48);font-weight:500}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:36px;line-height:1.03;letter-spacing:-0.02em;color:var(--white);margin-bottom:8px;opacity:0;animation:fadeUp 0.9s var(--ease-out) 0.35s forwards}
+.hero-tagline{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--gold);margin-bottom:22px;opacity:0;animation:fadeUp 0.9s var(--ease-out) 0.45s forwards;letter-spacing:0.02em}
+.hero p.lede{font-size:15px;line-height:1.78;color:rgba(255,255,255,0.66);margin-bottom:36px;max-width:490px;opacity:0;animation:fadeUp 0.9s var(--ease-out) 0.55s forwards}
+.hero-ctas{display:flex;gap:12px;flex-direction:column;opacity:0;animation:fadeUp 0.9s var(--ease-out) 0.68s forwards}
+.hero-ctas .btn{width:100%;justify-content:center}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+.hero-date-badge{position:absolute;right:20px;bottom:120px;z-index:4;display:none;background:rgba(13,61,36,0.75);border:1px solid rgba(201,168,76,0.38);backdrop-filter:blur(14px);padding:22px 20px;text-align:center;min-width:120px}
+.vb-label-top{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold-warm);font-weight:600;margin-bottom:10px;display:block}
+.vb-day{font-family:var(--serif);font-size:54px;font-weight:900;color:var(--white);line-height:1;display:block}
+.vb-month{font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-top:6px;display:block}
+.vb-sep{width:40px;height:1px;background:rgba(201,168,76,0.30);margin:12px auto}
+.vb-cta{font-size:9px;letter-spacing:0.24em;text-transform:uppercase;font-weight:600;color:var(--gold-warm)}
+
+.hero-stats{position:absolute;bottom:0;left:0;right:0;z-index:3;background:var(--white);border-top:3px solid var(--gold);opacity:0;animation:fadeIn 1s ease 1s forwards}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.hero-stats-row{display:grid;grid-template-columns:repeat(2,1fr);max-width:1280px;margin:0 auto;padding:0 16px}
+.hero-stats-cell{padding:12px 10px;border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:flex-start;gap:3px}
+.hero-stats-cell:nth-child(2n){border-right:none}
+.hero-stats-num{font-family:var(--serif);font-size:20px;font-weight:700;line-height:1;color:var(--green)}
+.hero-stats-lbl strong{display:block;font-size:10px;font-weight:600;color:var(--charcoal)}
+.hero-stats-lbl span{display:none;font-size:10px;color:var(--grey)}
+
+/* ─── PARTY STRIP ─── */
+.party-strip{background:var(--green-deep);padding:14px 0;border-bottom:1px solid rgba(201,168,76,0.14);overflow:hidden}
+.party-strip-inner{display:flex;align-items:center;gap:0;width:max-content;animation:marquee 22s linear infinite}
+.party-strip-inner:hover{animation-play-state:paused}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ps-item{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;font-weight:600;color:rgba(255,255,255,0.48)}
+.ps-item svg{color:var(--gold);flex-shrink:0}
+.ps-divider{width:1px;height:18px;background:rgba(255,255,255,0.10)}
+
+/* ─── ABOUT ─── */
+.about{padding:80px 0;background:var(--ivory)}
+.about-grid{display:grid;grid-template-columns:1fr;gap:48px;align-items:center}
+.about-photo-wrap{position:relative}
+.about-photo{position:relative;aspect-ratio:3/4;background:var(--green-deep) center/cover no-repeat;overflow:hidden}
+.about-photo-inner{position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(13,61,36,0.85) 100%)}
+.about-frame{position:absolute;top:-10px;right:-10px;bottom:10px;left:10px;border:1.5px solid rgba(201,168,76,0.32);pointer-events:none;z-index:2}
+.about-party-badge{position:absolute;bottom:20px;left:20px;z-index:3;display:flex;align-items:center;gap:10px;background:var(--white);padding:10px 16px;box-shadow:0 4px 24px rgba(0,0,0,0.14)}
+.about-party-badge img{width:28px;height:28px;object-fit:contain}
+.about-party-badge strong{display:block;font-size:12px;font-weight:700;color:var(--green)}
+.about-party-badge span{font-size:10px;color:var(--grey);letter-spacing:0.04em}
+.about-placeholder-text{position:absolute;inset:0;z-index:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:rgba(255,255,255,0.22);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;text-align:center;padding:20px}
+.about-placeholder-text svg{color:rgba(201,168,76,0.28)}
+.about-content h2{font-family:var(--serif);font-weight:900;font-size:clamp(28px,6vw,50px);line-height:1.06;letter-spacing:-0.015em;color:var(--charcoal);margin-bottom:18px;margin-top:12px}
+.about-content h2 em{font-style:italic;color:var(--green)}
+.about-lead{font-family:var(--serif);font-size:19px;line-height:1.7;color:var(--charcoal);margin-bottom:16px;font-style:italic}
+.about-body{font-size:15px;line-height:1.8;color:var(--grey);margin-bottom:20px}
+.about-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
+.about-fact{padding:16px;background:var(--white);border-left:3px solid var(--gold);box-shadow:0 2px 12px rgba(0,0,0,0.05);transition:transform 0.2s var(--ease-out),box-shadow 0.2s}
+.about-fact:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.08)}
+.about-fact strong{display:block;font-family:var(--serif);font-size:22px;font-weight:900;color:var(--green);line-height:1;margin-bottom:4px}
+.about-fact span{font-size:11px;color:var(--grey);line-height:1.4}
+
+/* ─── AGENDA ─── */
+.agenda{padding:80px 0;background:var(--green-deep);position:relative}
+.agenda::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(120deg,rgba(201,168,76,0.03) 0 1px,transparent 1px 34px);pointer-events:none}
+.agenda-head{margin-bottom:48px;position:relative;z-index:1}
+.agenda-head h2{font-family:var(--serif);font-weight:900;font-size:clamp(28px,6vw,50px);line-height:1.06;color:var(--white);margin-top:12px}
+.agenda-head .sub{font-size:15px;color:rgba(255,255,255,0.50);margin-top:12px;max-width:520px;line-height:1.75}
+.agenda-grid{display:grid;grid-template-columns:1fr;gap:2px;position:relative;z-index:1}
+.agenda-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);padding:28px 24px;position:relative;overflow:hidden;transition:background 0.3s,border-color 0.3s,transform 0.3s var(--ease-out)}
+.agenda-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(201,168,76,0.35);transform:translateY(-3px)}
+.agenda-card::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold-grad);transform:scaleX(0);transform-origin:left;transition:transform 0.4s var(--ease-out)}
+.agenda-card:hover::before{transform:scaleX(1)}
+.agenda-icon{width:48px;height:48px;background:rgba(201,168,76,0.10);border:1px solid rgba(201,168,76,0.22);display:flex;align-items:center;justify-content:center;color:var(--gold);margin-bottom:16px}
+.agenda-n{font-size:10px;letter-spacing:0.24em;font-weight:600;color:rgba(201,168,76,0.42);margin-bottom:8px}
+.agenda-card h3{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--white);line-height:1.18;margin-bottom:10px}
+.agenda-card p{font-size:13.5px;line-height:1.72;color:rgba(255,255,255,0.50)}
+.agenda-card .arr{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;color:var(--gold);opacity:0;transform:translateX(-8px);transition:opacity 0.3s,transform 0.3s var(--ease-out)}
+.agenda-card:hover .arr{opacity:1;transform:translateX(0)}
+
+/* ─── IMPACT ─── */
+.impact{padding:80px 0;background:var(--white)}
+.impact-head{margin-bottom:48px}
+.impact-head h2{font-family:var(--serif);font-weight:900;font-size:clamp(28px,6vw,50px);line-height:1.06;color:var(--charcoal);margin-top:12px}
+.impact-head .sub{font-size:15px;color:var(--grey);margin-top:12px;max-width:540px;line-height:1.75}
+.impact-grid{display:grid;grid-template-columns:1fr;gap:2px;background:var(--light-grey);border:1px solid var(--light-grey)}
+.impact-stat{background:var(--white);padding:28px 22px;position:relative;overflow:hidden;transition:background 0.2s}
+.impact-stat::after{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:var(--gold-grad)}
+.impact-stat:hover{background:var(--ivory)}
+.impact-num{font-family:var(--serif);font-size:clamp(36px,6vw,58px);font-weight:900;color:var(--green);line-height:1;margin-bottom:8px}
+.impact-lbl{font-size:14px;font-weight:600;color:var(--charcoal);margin-bottom:5px}
+.impact-desc{font-size:12px;color:var(--grey);line-height:1.65}
+
+/* ─── PROMISES ─── */
+.promises{padding:80px 0;background:var(--ivory)}
+.promises-head{margin-bottom:48px}
+.promises-head h2{font-family:var(--serif);font-weight:900;font-size:clamp(28px,6vw,50px);line-height:1.06;color:var(--charcoal);margin-top:12px}
+.promises-head .sub{font-size:15px;color:var(--grey);margin-top:12px;max-width:480px;line-height:1.75}
+.promises-grid{display:grid;grid-template-columns:1fr;gap:14px}
+.promise-card{background:var(--white);border:1px solid var(--light-grey);padding:24px 20px;border-radius:6px;position:relative;box-shadow:0 2px 14px rgba(0,0,0,0.05);transition:transform 0.3s var(--ease-out),box-shadow 0.3s,border-color 0.3s}
+.promise-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px -16px rgba(26,92,56,0.18);border-color:var(--green)}
+.promise-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold-grad);border-radius:6px 6px 0 0}
+.promise-icon{width:44px;height:44px;background:rgba(26,92,56,0.08);display:flex;align-items:center;justify-content:center;color:var(--green);margin-bottom:14px;border-radius:4px}
+.promise-card h3{font-family:var(--sans);font-size:15px;font-weight:700;color:var(--charcoal);margin-bottom:8px}
+.promise-card p{font-size:13px;line-height:1.72;color:var(--grey)}
+
+/* ─── ENDORSEMENTS ─── */
+.endorsements{padding:80px 0;background:var(--white)}
+.endorsements-head{margin-bottom:36px}
+.endorsements-head h2{font-family:var(--serif);font-weight:900;font-size:clamp(28px,6vw,50px);line-height:1.06;color:var(--charcoal);margin-top:12px}
+.end-slider-wrap{position:relative;overflow:hidden}
+.end-grid{display:flex;gap:20px;transition:transform 0.5s var(--ease-out);will-change:transform}
+.end-card{background:var(--ivory);border:1px solid var(--light-grey);padding:26px 22px;position:relative;transition:border-color 0.25s,box-shadow 0.25s;flex:0 0 calc(100% - 32px);min-width:0}
+@media(min-width:640px){.end-card{flex:0 0 calc(50% - 22px)}}
+@media(min-width:1024px){.end-card{flex:0 0 calc(33.333% - 24px)}}
+.end-card:hover{border-color:var(--gold);box-shadow:0 12px 32px -12px rgba(201,168,76,0.22)}
+.end-slider-controls{display:flex;align-items:center;gap:14px;margin-top:28px;justify-content:center}
+.end-slider-btn{width:42px;height:42px;border-radius:50%;border:2px solid var(--light-grey);background:var(--white);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color 0.2s,background 0.2s}
+.end-slider-btn:hover{border-color:var(--gold);background:var(--gold-pale)}
+.end-slider-btn:disabled{opacity:0.35;cursor:not-allowed}
+.end-dots{display:flex;gap:8px;align-items:center}
+.end-dot{width:8px;height:8px;border-radius:50%;background:var(--light-grey);cursor:pointer;transition:background 0.2s,transform 0.2s}
+.end-dot.active{background:var(--green);transform:scale(1.3)}
+.end-stars{display:flex;gap:4px;margin-bottom:14px}
+.star{color:var(--gold);font-size:14px}
+.end-quote{font-family:var(--serif);font-size:16px;font-style:italic;line-height:1.7;color:var(--charcoal);padding-left:40px;position:relative;margin-bottom:20px}
+.end-quote::before{content:"\201C";font-size:60px;line-height:0;vertical-align:-18px;color:var(--gold);font-style:normal;position:absolute;left:0;top:22px}
+.end-person{display:flex;align-items:center;gap:12px}
+.end-ava{width:44px;height:44px;background:var(--green-grad);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px;font-weight:700;color:var(--white);flex-shrink:0;border-radius:2px}
+.end-name{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--charcoal)}
+.end-role{font-size:11px;color:var(--grey);margin-top:2px}
+
+/* ─── NEWS ─── */
+.news{padding:80px 0;background:var(--ivory);border-top:1px solid var(--light-grey)}
+.news-head-row{display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
+.news-head-row h2{font-family:var(--serif);font-weight:900;font-size:clamp(28px,6vw,50px);line-height:1.06;color:var(--charcoal);margin-top:12px}
+.news-view-all{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--green);font-weight:700;transition:gap 0.25s var(--ease-out);align-self:flex-start}
+.news-view-all:hover{gap:14px}
+.news-grid{display:grid;grid-template-columns:1fr;gap:16px}
+.news-card{background:var(--white);border:1px solid var(--light-grey);display:block;overflow:hidden;border-radius:6px;box-shadow:0 2px 12px rgba(0,0,0,0.04);transition:border-color 0.3s,transform 0.35s var(--ease-out),box-shadow 0.35s}
+.news-card:hover{border-color:var(--green);transform:translateY(-4px);box-shadow:0 16px 40px -16px rgba(26,92,56,0.20)}
+.news-img{aspect-ratio:16/9;overflow:hidden}
+.news-img-inner{width:100%;height:100%;background:var(--light-grey) center/cover no-repeat;transition:transform 0.85s var(--ease-out)}
+.news-card:hover .news-img-inner{transform:scale(1.06)}
+.news-body{padding:18px 20px 22px;border-top:2px solid transparent;transition:border-color 0.3s}
+.news-card:hover .news-body{border-color:var(--gold)}
+.news-meta{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.news-cat{font-size:9px;letter-spacing:0.26em;text-transform:uppercase;font-weight:700;background:var(--green);color:var(--white);padding:3px 9px;border-radius:2px}
+.news-date{font-size:11px;color:var(--grey)}
+.news-title{font-family:var(--serif);font-size:clamp(16px,2.5vw,20px);font-weight:700;color:var(--charcoal);line-height:1.25;margin-bottom:8px}
+.news-excerpt{font-size:13px;color:var(--grey);line-height:1.65;margin-bottom:14px;display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.news-read{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--green);font-weight:700;display:inline-flex;align-items:center;gap:6px}
+.news-empty{color:var(--grey);font-size:14px;text-align:center;padding:40px 0;grid-column:1/-1}
+
+/* ─── JOIN ─── */
+.join{padding:80px 0;background:var(--green);position:relative;overflow:hidden}
+.join::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(120deg,rgba(255,255,255,0.035) 0 1px,transparent 1px 28px);pointer-events:none}
+.join-inner{max-width:700px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.join-inner h2{font-family:var(--serif);font-weight:900;font-size:clamp(28px,6vw,50px);line-height:1.06;color:var(--white);margin:12px 0 14px}
+.join-inner p{font-size:15px;color:rgba(255,255,255,0.66);margin-bottom:36px;line-height:1.75}
+.join-form{display:flex;flex-direction:column;gap:12px}
+.form-row{display:grid;grid-template-columns:1fr;gap:12px}
+.join-input{width:100%;padding:14px 16px;background:rgba(255,255,255,0.10);border:1.5px solid rgba(255,255,255,0.22);color:var(--white);font-size:14px;font-family:var(--sans);outline:none;transition:border-color 0.2s,background 0.2s;border-radius:4px}
+.join-input::placeholder{color:rgba(255,255,255,0.40)}
+.join-input:focus{border-color:var(--gold);background:rgba(255,255,255,0.15)}
+.join-select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.join-select option{background:var(--green-deep);color:var(--white)}
+.join-submit{padding:15px 28px;background:var(--gold-grad);color:var(--green-deep);font-weight:700;font-size:14px;letter-spacing:0.05em;border:none;border-radius:4px;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;font-family:var(--sans)}
+.join-submit:hover{transform:translateY(-2px);box-shadow:0 14px 32px -14px rgba(201,168,76,0.65)}
+.join-note{font-size:12px;color:rgba(255,255,255,0.42);margin-top:10px}
+
+/* ─── DONATE ─── */
+.donate{padding:80px 0;background:var(--ivory);text-align:center}
+.donate-inner{max-width:640px;margin:0 auto}
+.donate-inner h2{font-family:var(--serif);font-weight:900;font-size:clamp(28px,6vw,44px);line-height:1.06;color:var(--charcoal);margin:12px 0 12px}
+.donate-inner p{font-size:15px;color:var(--grey);margin-bottom:32px;line-height:1.75}
+.donate-amounts{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:20px}
+.donate-chip{padding:10px 20px;background:var(--white);border:1.5px solid var(--light-grey);border-radius:4px;font-size:14px;font-weight:600;color:var(--charcoal);cursor:pointer;transition:all 0.2s;font-family:var(--sans)}
+.donate-chip:hover,.donate-chip.active{background:var(--green);border-color:var(--green);color:var(--white)}
+.donate-custom{max-width:280px;margin:0 auto 24px}
+.donate-custom input{width:100%;padding:13px 16px;border:1.5px solid var(--light-grey);border-radius:4px;font-size:15px;font-family:var(--sans);outline:none;transition:border-color 0.2s;text-align:center;color:var(--charcoal);background:var(--white)}
+.donate-custom input:focus{border-color:var(--green)}
+
+/* ─── FOOTER ─── */
+.footer{background:var(--green-deep);padding:64px 0 28px;position:relative}
+.footer-gold-bar{position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold-grad)}
+.footer-grid{display:grid;grid-template-columns:1fr;gap:36px}
+.footer-brand-logo{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.footer-party-logo{width:38px;height:38px;object-fit:contain}
+.footer-wm-name{font-family:var(--serif);font-weight:700;font-size:18px;color:var(--white)}
+.footer-wm-party{font-size:9px;letter-spacing:0.28em;color:var(--gold);margin-top:5px;text-transform:uppercase;display:block}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,0.40);line-height:1.75;margin-bottom:20px;max-width:260px}
+.footer-socials{display:flex;gap:8px}
+.footer-social{width:36px;height:36px;border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.38);display:flex;align-items:center;justify-content:center;transition:border-color 0.25s,color 0.25s,background 0.25s;border-radius:2px}
+.footer-social:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,0.08)}
+.footer-col h5{font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;font-weight:600}
+.footer-col a,.footer-col address{display:block;font-size:13px;color:rgba(255,255,255,0.40);padding:4px 0;transition:color 0.2s;line-height:1.7;font-style:normal}
+.footer-col a:hover{color:rgba(255,255,255,0.82)}
+.footer-col .ci{display:flex;align-items:flex-start;gap:10px}
+.footer-col .ci svg{flex-shrink:0;margin-top:3px;color:var(--gold)}
+.footer-bottom{margin-top:48px;padding-top:22px;border-top:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;gap:6px;font-size:11px;color:rgba(255,255,255,0.28);letter-spacing:0.08em;text-align:center}
+.footer-tagline{color:var(--gold);font-style:italic;font-family:var(--serif);font-size:13px}
+
+/* ─── BACK TO TOP ─── */
+.back-top{position:fixed;bottom:24px;right:20px;z-index:50;width:42px;height:42px;background:var(--green);color:var(--white);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(12px);transition:opacity 0.3s,transform 0.3s,background 0.2s;border-radius:2px;box-shadow:0 4px 16px rgba(13,61,36,0.40)}
+.back-top.visible{opacity:1;transform:translateY(0)}
+.back-top:hover{background:var(--gold)}
+
+/* ─── MOBILE OPTIMISATION ─── */
+@media(max-width:479px){
+  .about,.impact,.promises,.endorsements,.news,.join,.donate,.poi-tour{padding:52px 0}
+  .agenda{padding:52px 0}
+  .hero-content{padding:96px 0 108px}
+  .hero h1{font-size:clamp(30px,9vw,42px)}
+  .hero-tagline{font-size:16px;margin-bottom:16px}
+  .hero p.lede{font-size:14px;margin-bottom:28px}
+  .hero-ctas{gap:10px}
+  .hero-ctas .btn{padding:13px 20px;font-size:12px}
+  .hero-stats-row{grid-template-columns:repeat(4,1fr)}
+  .hero-stats-cell{padding:10px 6px;gap:2px;border-right:1px solid var(--line)}
+  .hero-stats-cell:last-child{border-right:none}
+  .hero-stats-num{font-size:16px}
+  .hero-stats-lbl strong{font-size:8px;line-height:1.3}
+  .about-photo{height:320px;aspect-ratio:unset}
+  .about-facts{grid-template-columns:1fr}
+  .about-lead{font-size:16px}
+  .impact-head,.promises-head,.agenda-head,.endorsements-head{margin-bottom:24px}
+  .impact-stat{padding:20px 16px}
+  .impact-num{font-size:clamp(32px,8vw,44px)}
+  .agenda-card{padding:22px 18px}
+  .agenda-card h3{font-size:18px}
+  .promise-card{padding:20px 16px}
+  .end-card{padding:20px 16px}
+  .end-quote{font-size:14px}
+  .join-inner p{margin-bottom:24px}
+  .join{padding:52px 0}
+  .donate{padding:52px 0}
+  .donate-amounts{gap:8px}
+  .donate-chip{padding:9px 14px;font-size:13px}
+  .poi-tour-head{margin-bottom:32px}
+  .footer{padding:48px 0 24px}
+  .footer-grid{gap:28px}
+  .nav-brand .nav-party-logo{width:28px;height:28px}
+  .lbl{font-size:9px;letter-spacing:0.22em}
+}
+
+/* ─── RESPONSIVE ─── */
+@media(min-width:480px){
+  .hero h1{font-size:clamp(40px,10vw,56px)}
+  .hero-ctas{flex-direction:row}
+  .hero-ctas .btn{width:auto}
+  .hero-stats-row{grid-template-columns:repeat(4,1fr)}
+  .hero-stats-cell{border-right:1px solid var(--line)}
+  .hero-stats-cell:nth-child(2n){border-right:1px solid var(--line)}
+  .hero-stats-cell:last-child{border-right:none}
+  .form-row{grid-template-columns:1fr 1fr}
+  .impact-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(min-width:640px){
+  .container{padding:0 24px}
+  .about,.agenda,.impact,.promises,.endorsements,.news,.join,.donate{padding:96px 0}
+  .news-grid{grid-template-columns:1fr 1fr}
+  .end-grid{}
+  .agenda-grid{grid-template-columns:1fr 1fr}
+  .promises-grid{grid-template-columns:1fr 1fr}
+}
+@media(min-width:780px){
+  .container{padding:0 32px}
+  .nav{padding:18px 32px}
+  .nav.scrolled{padding:12px 32px}
+  .nav-links{display:flex}
+  .nav-cta-desktop{display:inline-flex}
+  .nav-burger{display:none}
+  .hero h1{font-size:clamp(46px,6vw,72px)}
+  .hero-content{width:60%;padding:130px 0 140px}
+  .hero-date-badge{display:block}
+  .hero-stats-row{grid-template-columns:repeat(4,1fr);padding:0 32px}
+  .hero-stats-cell{padding:16px 18px;gap:8px}
+  .hero-stats-num{font-size:26px}
+  .hero-stats-lbl strong{font-size:11px}
+  .hero-stats-lbl span{display:block}
+  .impact-grid{grid-template-columns:repeat(4,1fr)}
+  .about-grid{grid-template-columns:1fr 1.2fr;gap:60px}
+  .news-head-row{flex-direction:row;justify-content:space-between;align-items:flex-end}
+  .news-view-all{align-self:auto}
+  .promises-grid{grid-template-columns:repeat(3,1fr)}
+  .agenda-grid{grid-template-columns:repeat(3,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr 1fr}
+}
+@media(min-width:900px){
+  .nav{padding:18px 48px}
+  .nav.scrolled{padding:12px 48px}
+  .container{padding:0 40px}
+  .hero-stats-row{padding:0 40px}
+  .hero-stats-cell{padding:20px 22px;gap:14px}
+  .hero-stats-num{font-size:30px}
+  .end-grid{}
+  .footer-grid{grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px}
+}
+@media(min-width:1080px){
+  .hero h1{font-size:clamp(56px,5.5vw,84px)}
+  .hero-content{width:55%;padding:140px 0 160px}
+  .news-grid{grid-template-columns:repeat(3,1fr)}
+}
+
+/* POI TOUR VIDEO SECTION */
+.poi-tour{padding:96px 0;background:var(--green-deep);position:relative;overflow:hidden}
+.poi-tour::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(120deg,rgba(201,168,76,0.03) 0 1px,transparent 1px 38px);pointer-events:none}
+.poi-tour-head{text-align:center;margin-bottom:48px}
+.poi-tour-head .lbl{justify-content:center}
+.poi-tour-head h2{font-family:var(--serif);font-weight:900;font-size:clamp(28px,6vw,52px);color:var(--white);line-height:1.05;margin-bottom:16px}
+.poi-tour-head p{color:rgba(255,255,255,0.60);font-size:15px;max-width:520px;margin:0 auto;line-height:1.75}
+.poi-tour-player{max-width:860px;margin:0 auto;position:relative}
+.poi-tour-frame{width:100%;aspect-ratio:16/9;border-radius:4px;overflow:hidden;border:2px solid rgba(201,168,76,0.28);box-shadow:0 32px 80px -24px rgba(0,0,0,0.6)}
+.poi-tour-frame iframe{width:100%;height:100%;border:none;display:block}
+.poi-tour-placeholder{width:100%;aspect-ratio:16/9;background:rgba(255,255,255,0.04);border:2px dashed rgba(201,168,76,0.30);border-radius:4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;cursor:pointer}
+.poi-tour-placeholder svg{color:var(--gold);opacity:0.7}
+.poi-tour-placeholder span{color:rgba(255,255,255,0.50);font-size:13px;letter-spacing:0.06em}
+.poi-tour-placeholder strong{color:var(--gold-warm);font-size:15px;font-family:var(--serif)}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="#top" class="nav-brand">
+    <img src="poi logo.jpeg" class="nav-party-logo" alt="POI logo" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid rgba(201,168,76,0.45)">
+    <img src="apc logo.png" class="nav-party-logo" alt="APC logo">
+    <div class="nav-wordmark">
+      <span class="name">Pastor (Dr.) Osagie Ize-Iyamu</span>
+      <span class="tag">Senate · Edo South · APC</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#about" data-nav="about">About</a>
+    <a href="#agenda" data-nav="agenda">Agenda</a>
+    <a href="#impact" data-nav="impact">Record</a>
+    <a href="#promises" data-nav="promises">Promises</a>
+    <a href="#news" data-nav="news">News</a>
+    <a href="#contact" data-nav="contact">Contact</a>
+    <button class="nav-cta-desktop" onclick="location.href='#donate'">Support Campaign</button>
+  </div>
+  <button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#about">About</a>
+  <a href="#agenda">Agenda</a>
+  <a href="#impact">Record</a>
+  <a href="#promises">Promises</a>
+  <a href="#news">News</a>
+  <a href="#contact">Contact</a>
+  <button class="mobile-cta" onclick="location.href='#donate';document.getElementById('nav-burger').classList.remove('open');document.getElementById('mobile-menu').classList.remove('open');document.body.style.overflow=''">Support Campaign</button>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg" style="background-image:url('IMG_6407_(2).jpg')"></div>
+  <div class="hero-pattern"></div>
+  <div class="container" style="width:100%;position:relative;z-index:3">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="hero-apc-badge">
+          <img src="apc logo.png" alt="APC">
+          <span>APC · Edo South</span>
+        </div>
+        <span class="hero-senate-lbl">Senate Candidate · 2027</span>
+      </div>
+      <h1>Pastor (Dr.) Osagie<br>Ize-Iyamu</h1>
+      <div class="hero-tagline" style="color:var(--white)">Leadership. Service. Vision for Edo.</div>
+      <p class="lede" style="color:var(--white)">35 years of proven service. A clear legislative agenda. The voice Edo South deserves in the Senate.</p>
+      <div class="hero-ctas">
+        <button class="btn btn-gold" onclick="location.href='#join'">
+          Join the Movement
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <a class="btn btn-outline" href="POI-Simple-Agenda.pdf" download="POI-Simple-Agenda.pdf">View the POI Simple Agenda</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-date-badge">
+    <span class="vb-label-top">Election Year</span>
+    <span class="vb-day">2027</span>
+    <span class="vb-month">Senate Elections</span>
+    <div class="vb-sep"></div>
+    <span class="vb-cta">Your Vote Matters</span>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stats-row">
+      <div class="hero-stats-cell">
+        <div class="hero-stats-num">35+</div>
+        <div class="hero-stats-lbl"><strong>Years of Service</strong><span>Continuous public engagement</span></div>
+      </div>
+      <div class="hero-stats-cell">
+        <div class="hero-stats-num">1</div>
+        <div class="hero-stats-lbl"><strong>Political Appointment</strong><span>Secretary to the State Govt.</span></div>
+      </div>
+      <div class="hero-stats-cell">
+        <div class="hero-stats-num">300k+</div>
+        <div class="hero-stats-lbl"><strong>Youth Reached</strong><span>Through empowerment programmes</span></div>
+      </div>
+      <div class="hero-stats-cell">
+        <div class="hero-stats-num">77</div>
+        <div class="hero-stats-lbl"><strong>LGAs in Focus</strong><span>Edo South Senatorial District</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTY STRIP -->
+<div class="party-strip">
+  <div class="party-strip-inner">
+    <div class="ps-item" style="padding:0 28px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg><span>All Progressives Congress</span></div>
+    <div class="ps-divider"></div>
+    <div class="ps-item" style="padding:0 28px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg><span>Edo South Senatorial District</span></div>
+    <div class="ps-divider"></div>
+    <div class="ps-item" style="padding:0 28px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>A Proven Track Record</span></div>
+    <div class="ps-divider"></div>
+    <div class="ps-item" style="padding:0 28px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-8 8-13a8 8 0 10-16 0c0 5 8 13 8 13z"/><circle cx="12" cy="9" r="3"/></svg><span>Edo State, Nigeria</span></div>
+    <div class="ps-divider"></div>
+    <div class="ps-item" style="padding:0 28px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg><span>All Progressives Congress</span></div>
+    <div class="ps-divider"></div>
+    <div class="ps-item" style="padding:0 28px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg><span>Edo South Senatorial District</span></div>
+    <div class="ps-divider"></div>
+    <div class="ps-item" style="padding:0 28px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>A Proven Track Record</span></div>
+    <div class="ps-divider"></div>
+    <div class="ps-item" style="padding:0 28px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-8 8-13a8 8 0 10-16 0c0 5 8 13 8 13z"/><circle cx="12" cy="9" r="3"/></svg><span>Edo State, Nigeria</span></div>
+    <div class="ps-divider"></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-photo-wrap reveal">
+        <div class="about-photo" style="background-image:url('IMG_6369_(2).jpg')">
+          <div class="about-photo-inner"></div>
+        </div>
+        <div class="about-frame"></div>
+        <div class="about-party-badge">
+          <img src="apc logo.png" alt="APC">
+          <div><strong>APC Candidate</strong><span>Edo South · Senate 2027</span></div>
+        </div>
+      </div>
+      <div class="about-content">
+        <span class="lbl on-light reveal">About the Candidate</span>
+        <h2 class="reveal reveal-delay-1">The Man Behind<br><em>the Vision</em></h2>
+        <p class="about-lead reveal reveal-delay-2">"Every community in Edo South deserves a voice that is heard — and a representative with the strength to act on that voice."</p>
+        <p class="about-body reveal reveal-delay-2">Pastor (Dr.) Osagie Ize-Iyamu is one of Nigeria's most recognisable political figures from Edo State — a man of deep faith, proven leadership, and an unrelenting commitment to the development of his people. With over three decades of service spanning public governance and community development, he brings unmatched depth of experience to the Senate race.</p>
+        <p class="about-body reveal reveal-delay-3">Born and raised in Edo State, Pastor Ize-Iyamu has dedicated his life to the service of ordinary Nigerians — championing education, economic empowerment, healthcare access, and infrastructure development. His Senate campaign represents the next chapter in a life already given to public service.</p>
+        <div class="about-facts reveal reveal-delay-3">
+          <div class="about-fact"><strong>35+</strong><span>Years of public service across governance and community</span></div>
+          <div class="about-fact"><strong>Edo</strong><span>Born and raised — a true son of the soil</span></div>
+          <div class="about-fact"><strong>APC</strong><span>All Progressives Congress — a platform for change</span></div>
+          <div class="about-fact"><strong>2027</strong><span>Edo South Senatorial District</span></div>
+        </div>
+        <div class="reveal reveal-delay-4">
+          <button class="btn btn-primary" onclick="location.href='#agenda'">
+            See Our Agenda
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENDA PILLARS -->
+<section class="agenda" id="agenda">
+  <div class="container">
+    <div class="agenda-head">
+      <span class="lbl on-dark reveal">Our Vision for Edo</span>
+      <h2 class="reveal reveal-delay-1">Six Pillars of<br>Transformation</h2>
+      <p class="sub reveal reveal-delay-2">A comprehensive legislative agenda rooted in the real needs of Edo South — built through decades of listening, learning, and leading on the ground.</p>
+    </div>
+    <div class="agenda-grid">
+      <div class="agenda-card reveal">
+        <div class="agenda-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+        <div class="agenda-n">01</div>
+        <h3>Education &amp; Youth</h3>
+        <p>Championing legislation to fund public schools, expand scholarship access for Edo students, and create vocational pathways that keep our youth employed in Edo State.</p>
+        <span class="arr">Our Commitment <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+      <div class="agenda-card reveal reveal-delay-1">
+        <div class="agenda-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+        <div class="agenda-n">02</div>
+        <h3>Infrastructure</h3>
+        <p>Securing federal allocation for roads, bridges, rural electrification, and water systems across Edo South — infrastructure that unlocks economic activity and quality of life.</p>
+        <span class="arr">Our Commitment <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+      <div class="agenda-card reveal reveal-delay-2">
+        <div class="agenda-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+        <div class="agenda-n">03</div>
+        <h3>Healthcare</h3>
+        <p>Pushing for expansion of primary healthcare centres in rural Edo, increased NHIS coverage, and emergency medical infrastructure in underserved communities.</p>
+        <span class="arr">Our Commitment <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+      <div class="agenda-card reveal">
+        <div class="agenda-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M12 15a2 2 0 100-4 2 2 0 000 4z"/></svg></div>
+        <div class="agenda-n">04</div>
+        <h3>Economic Development</h3>
+        <p>Legislative advocacy for SME funding, agricultural investment, and establishing Edo South as a designated economic development zone to attract investment.</p>
+        <span class="arr">Our Commitment <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+      <div class="agenda-card reveal reveal-delay-1">
+        <div class="agenda-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/></svg></div>
+        <div class="agenda-n">05</div>
+        <h3>Security &amp; Peace</h3>
+        <p>Working to fund community policing initiatives, security equipment for Edo State forces, and dialogue frameworks addressing root causes of insecurity in our communities.</p>
+        <span class="arr">Our Commitment <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+      <div class="agenda-card reveal reveal-delay-2">
+        <div class="agenda-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="M8 4v16M16 4v16"/></svg></div>
+        <div class="agenda-n">06</div>
+        <h3>Accountability &amp; Governance</h3>
+        <p>Championing transparency bills, constituency project oversight, and regular town hall engagement — ensuring Edo South knows exactly how their senator votes and why.</p>
+        <span class="arr">Our Commitment <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT STATS -->
+<section class="impact" id="impact">
+  <div class="container">
+    <div class="impact-head">
+      <span class="lbl on-light reveal">A Proven Record</span>
+      <h2 class="reveal reveal-delay-1">Three Decades.<br>Measurable Impact.</h2>
+      <p class="sub reveal reveal-delay-2">Numbers that tell the story of a life spent in genuine public service — not just in campaigns, but in communities.</p>
+    </div>
+    <div class="impact-grid">
+      <div class="impact-stat reveal"><div class="impact-num">35+</div><div class="impact-lbl">Years of Public Service</div><div class="impact-desc">Spanning governance, community development, and legislative advocacy across Edo State</div></div>
+      <div class="impact-stat reveal reveal-delay-1"><div class="impact-num">300k+</div><div class="impact-lbl">Youth Reached</div><div class="impact-desc">Through skills programmes, scholarships, and vocational empowerment initiatives across Edo</div></div>
+      <div class="impact-stat reveal reveal-delay-2"><div class="impact-num">77</div><div class="impact-lbl">LGAs in Focus</div><div class="impact-desc">Direct constituency engagement across local government areas in Edo South Senatorial District</div></div>
+      <div class="impact-stat reveal reveal-delay-3"><div class="impact-num">1</div><div class="impact-lbl">Political Appointment</div><div class="impact-desc">Secretary to the State Government — principled service at the highest level of governance</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPAIGN PROMISES -->
+<section class="promises" id="promises">
+  <div class="container">
+    <div class="promises-head">
+      <span class="lbl on-light reveal">Our Commitments</span>
+      <h2 class="reveal reveal-delay-1">What We Will<br>Deliver for Edo</h2>
+      <p class="sub reveal reveal-delay-2">Specific, measurable commitments — not vague promises. These are the legislative priorities that will define a first term in the Senate.</p>
+    </div>
+    <div class="promises-grid">
+      <div class="promise-card reveal">
+        <div class="promise-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Security &amp; Social Welfare</h3>
+        <p>Advocate for community policing funding, emergency response infrastructure, social welfare offices in all three senatorial districts, and legislation to protect widows, pensioners, and vulnerable persons in Edo South.</p>
+      </div>
+      <div class="promise-card reveal reveal-delay-1">
+        <div class="promise-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg></div>
+        <h3>Infrastructure &amp; Urban Renewal</h3>
+        <p>Secure federal allocation to rehabilitate major roads, construct bridges, deploy drainage systems to combat flooding, and connect every town and village in Edo South to the national electricity grid.</p>
+      </div>
+      <div class="promise-card reveal reveal-delay-2">
+        <div class="promise-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+        <h3>Manpower &amp; Education</h3>
+        <p>Sponsor legislation for free and compulsory education, establish Technical and Vocational Training Centres in each LGA, provide ICT skills programmes, and fund scholarships for Edo South students in higher institutions.</p>
+      </div>
+      <div class="promise-card reveal">
+        <div class="promise-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M12 15a2 2 0 100-4 2 2 0 000 4z"/></svg></div>
+        <h3>Public Private Partnership</h3>
+        <p>Legislate for Technology Incubation Centres and Export Processing Zones in Edo South, attract inward investment through an International Edo Development Summit, and establish industrial parks to drive manufacturing and job creation.</p>
+      </div>
+      <div class="promise-card reveal reveal-delay-1">
+        <div class="promise-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg></div>
+        <h3>Healthcare for All</h3>
+        <p>Fund Primary Health Care Centres across all 192 wards, upgrade referral hospitals, deploy mobile health service buses to rural communities, and establish a Disease Control Centre to tackle HIV, TB, and malaria in Edo South.</p>
+      </div>
+      <div class="promise-card reveal reveal-delay-2">
+        <div class="promise-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <h3>Employment &amp; Youth Empowerment</h3>
+        <p>Establish an Edo Employment Bureau, create entrepreneurship platforms with access to funding across all 18 LGAs, reintroduce school sports, and ensure every school leaver acquires a certified vocational skill before graduation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POI TOUR VIDEO -->
+<section class="poi-tour" id="poi-tour">
+  <div class="container">
+    <div class="poi-tour-head">
+      <span class="lbl on-dark reveal">Behind the Campaign</span>
+      <h2 class="reveal reveal-delay-1">The POI Tour</h2>
+      <p class="reveal reveal-delay-2">Follow Pastor (Dr.) Osagie Ize-Iyamu on the ground — from ward meetings to community dialogues, see the leadership that Edo South deserves.</p>
+    </div>
+    <div class="poi-tour-player reveal reveal-delay-3">
+      <div class="poi-tour-placeholder" id="poi-video-placeholder">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+        <strong>The POI Tour — Coming Soon</strong>
+        <span>Video will be added here</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENDORSEMENTS -->
+<section class="endorsements" id="testimonials">
+  <div class="container">
+    <div class="endorsements-head">
+      <span class="lbl on-light reveal">Community Voices</span>
+      <h2 class="reveal reveal-delay-1">What Edo People<br>Are Saying</h2>
+    </div>
+    <div class="end-slider-wrap">
+      <div class="end-grid" id="end-slider">
+        <div class="end-card">
+          <div class="end-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="end-quote">Pastor Ize-Iyamu has stood with the people of Edo through every season. He is not a newcomer to service — he has been here, in our communities, when it was not election season. That is the kind of senator we need.</p>
+          <div class="end-person"><div class="end-ava">OA</div><div><div class="end-name">Chief Osaro A.</div><div class="end-role">Community Leader, Esan North-East LGA</div></div></div>
+        </div>
+        <div class="end-card">
+          <div class="end-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="end-quote">As a small business owner in Uromi, I have watched our roads and markets suffer for years. Pastor POI is the first candidate I have heard speak specifically about our economic needs — and backed it with a plan.</p>
+          <div class="end-person"><div class="end-ava">FE</div><div><div class="end-name">Fatima E.</div><div class="end-role">Market Trader &amp; Entrepreneur, Uromi</div></div></div>
+        </div>
+        <div class="end-card">
+          <div class="end-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="end-quote">The youth of Edo South are looking for a leader who sees us — not just as voters, but as the future of this state. Pastor Ize-Iyamu's empowerment programmes have touched thousands of us already.</p>
+          <div class="end-person"><div class="end-ava">KI</div><div><div class="end-name">Kelvin I.</div><div class="end-role">Youth Leader, Etsako Youth Forum</div></div></div>
+        </div>
+        <div class="end-card">
+          <div class="end-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="end-quote">In every ward I have visited, people speak of Pastor POI with genuine respect. He does not just promise — he has a clear plan, a track record, and the courage to see it through for all of us in Edo South.</p>
+          <div class="end-person"><div class="end-ava">BU</div><div><div class="end-name">Barrister Uyi B.</div><div class="end-role">Civil Society Advocate, Benin City</div></div></div>
+        </div>
+        <div class="end-card">
+          <div class="end-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p class="end-quote">Our community has been waiting for real representation. Pastor Ize-Iyamu understands the struggles of farmers and rural families. He is the leader Edo South has been waiting for.</p>
+          <div class="end-person"><div class="end-ava">MA</div><div><div class="end-name">Mama Agbon</div><div class="end-role">Farmers' Representative, Ovia North-East</div></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="end-slider-controls">
+      <button class="end-slider-btn" id="end-prev" aria-label="Previous" onclick="endSlide(-1)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="end-dots" id="end-dots"></div>
+      <button class="end-slider-btn" id="end-next" aria-label="Next" onclick="endSlide(1)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="news" id="news">
+  <div class="container">
+    <div class="news-head-row reveal">
+      <div>
+        <span class="lbl on-light">Campaign Updates</span>
+        <h2>Latest from<br>the Campaign</h2>
+      </div>
+      <a href="blog.html" class="news-view-all">All Press Releases <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <div class="news-grid" id="news-grid"><p class="news-empty" style="opacity:0.5">Loading campaign updates…</p></div>
+  </div>
+</section>
+
+<!-- JOIN -->
+<section class="join" id="join">
+  <div class="container">
+    <div class="join-inner">
+      <span class="lbl on-dark reveal" style="justify-content:center">Get Involved</span>
+      <h2 class="reveal reveal-delay-1">Join the Movement<br>for Edo</h2>
+      <p class="reveal reveal-delay-2">Whether you want to volunteer, organise in your community, or simply stay informed — every person who joins brings us one step closer to the Edo we deserve.</p>
+      <form class="join-form reveal reveal-delay-3" id="join-form">
+        <div class="form-row">
+          <input class="join-input" type="text" id="f-name" placeholder="Full Name" required />
+          <input class="join-input" type="tel" id="f-phone" placeholder="Phone Number" required />
+        </div>
+        <div class="form-row">
+          <input class="join-input" type="email" id="f-email" placeholder="Email Address (optional)" />
+          <select class="join-input join-select" id="f-lga">
+            <option value="">Select Your LGA</option>
+            <option>Esan North-East</option><option>Esan South-East</option><option>Esan Central</option><option>Esan West</option>
+            <option>Etsako Central</option><option>Etsako East</option><option>Etsako West</option>
+            <option>Owan East</option><option>Owan West</option><option>Other Edo LGA</option><option>Diaspora</option>
+          </select>
+        </div>
+        <select class="join-input join-select" id="f-role">
+          <option value="">How would you like to get involved?</option>
+          <option>Campaign Volunteer</option><option>Ward Coordinator</option><option>Social Media Supporter</option>
+          <option>Donor</option><option>Diaspora Supporter</option><option>Just staying informed</option>
+        </select>
+        <button type="submit" class="join-submit" id="join-btn">Join the Movement →</button>
+        <p class="join-note" id="join-msg"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE -->
+<section class="donate" id="donate">
+  <div class="container">
+    <div class="donate-inner">
+      <span class="lbl on-light reveal" style="justify-content:center">Support the Campaign</span>
+      <h2 class="reveal reveal-delay-1">Invest in<br>Edo's Future</h2>
+      <p class="reveal reveal-delay-2">Every contribution — large or small — funds the grassroots work that reaches every ward, every market, and every home in Edo South.</p>
+      <div class="donate-amounts reveal reveal-delay-3">
+        <button class="donate-chip">₦1,000</button>
+        <button class="donate-chip active">₦5,000</button>
+        <button class="donate-chip">₦10,000</button>
+        <button class="donate-chip">₦50,000</button>
+        <button class="donate-chip">₦100,000</button>
+      </div>
+      <div class="donate-custom reveal reveal-delay-3">
+        <input type="text" placeholder="Or enter a custom amount (₦)" id="donate-amount" />
+      </div>
+      <div class="reveal reveal-delay-4">
+        <button class="btn btn-gold" style="font-size:14px;padding:16px 36px" onclick="alert('Secure payment gateway — contact campaign@izeiyamu2027.ng to contribute.')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+          Contribute to the Campaign
+        </button>
+      </div>
+      <p style="font-size:12px;color:var(--grey);margin-top:16px">All contributions are used directly for campaign activities in Edo South.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" id="contact">
+  <div class="footer-gold-bar"></div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-logo">
+          <img src="apc logo.png" class="footer-party-logo" alt="APC logo">
+          <div><div class="footer-wm-name">Ize-Iyamu 2027</div><span class="footer-wm-party">APC · Edo South Senate</span></div>
+        </div>
+        <p>The official campaign of Pastor (Dr.) Osagie Ize-Iyamu for the Edo South Senatorial District — Senate 2027. Leadership. Service. Vision for Edo.</p>
+        <div class="footer-socials">
+          <a class="footer-social" href="https://web.facebook.com/pastorosagieizeiyamu/" aria-label="Facebook" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a class="footer-social" href="https://x.com/PastorIzeIyamu" aria-label="Twitter" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+          <a class="footer-social" href="https://www.instagram.com/_pastorizeiyamu/" aria-label="Instagram" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a class="footer-social" href="#" aria-label="YouTube" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Campaign</h5>
+        <a href="#about">About Pastor POI</a>
+        <a href="#agenda">Our Agenda</a>
+        <a href="#impact">Track Record</a>
+        <a href="#promises">Campaign Promises</a>
+        <a href="blog.html">Press Releases</a>
+        <a href="#join">Get Involved</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <div class="ci"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-8 8-13a8 8 0 10-16 0c0 5 8 13 8 13z"/><circle cx="12" cy="9" r="3"/></svg><address>POI Campaign Office<br>Benin City, Edo State, Nigeria</address></div>
+        <div class="ci" style="margin-top:10px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5h18v14H3zM3 5l9 8 9-8"/></svg><a href="mailto:campaign@izeiyamu2027.ng">campaign@izeiyamu2027.ng</a></div>
+        <div class="ci" style="margin-top:10px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 4h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A18 18 0 013 6a2 2 0 012-2z"/></svg><a href="tel:+2348000000000">Campaign Hotline</a></div>
+      </div>
+      <div class="footer-col">
+        <h5>Legal</h5>
+        <p style="font-size:12px;color:rgba(255,255,255,0.32);line-height:1.72">This is the official campaign website of Pastor (Dr.) Osagie Ize-Iyamu. Authorised by the POI 2027 Campaign Coordination Team. All content represents the views and commitments of the campaign.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2027 Ize-Iyamu Senate Campaign · Edo South · All Rights Reserved</div>
+      <div class="footer-tagline">Leadership. Service. Vision for Edo.</div>
+      <div>Powered by APC · Nigeria's Progressive Party</div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" id="back-top" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script>
+var SB_URL = 'https://iurnsfwoqpncbjjfqgwc.supabase.co';
+var SB_KEY = 'sb_publishable_77ro4nlH4bKjbQ6mHE0XjA_6xWJWZLv';
+var sb = supabase.createClient(SB_URL, SB_KEY);
+
+/* Nav scroll */
+var nav = document.getElementById('nav');
+window.addEventListener('scroll', function() {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+  document.getElementById('back-top').classList.toggle('visible', window.scrollY > 400);
+}, { passive: true });
+
+/* Active nav link */
+var sections = document.querySelectorAll('section[id]');
+var navLinks = document.querySelectorAll('.nav-links a[data-nav]');
+var obsNav = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) navLinks.forEach(function(l) { l.classList.toggle('active', l.dataset.nav === e.target.id); });
+  });
+}, { threshold: 0.35 });
+sections.forEach(function(s) { obsNav.observe(s); });
+
+/* Mobile burger */
+var burger = document.getElementById('nav-burger');
+var mob = document.getElementById('mobile-menu');
+burger.addEventListener('click', function() {
+  burger.classList.toggle('open');
+  mob.classList.toggle('open');
+  document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : '';
+});
+document.querySelectorAll('.mobile-menu a, .mobile-menu .mobile-cta').forEach(function(el) {
+  el.addEventListener('click', function() {
+    burger.classList.remove('open'); mob.classList.remove('open'); document.body.style.overflow = '';
+  });
+});
+
+/* Back to top */
+document.getElementById('back-top').addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+/* Scroll reveal */
+var revObs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.reveal').forEach(function(el) { revObs.observe(el); });
+
+/* Donate chips */
+document.querySelectorAll('.donate-chip').forEach(function(chip) {
+  chip.addEventListener('click', function() {
+    document.querySelectorAll('.donate-chip').forEach(function(c) { c.classList.remove('active'); });
+    chip.classList.add('active');
+    document.getElementById('donate-amount').value = chip.textContent;
+  });
+});
+
+/* News from Supabase */
+(function() {
+  var grid = document.getElementById('news-grid');
+  sb.from('posts').select('title,slug,excerpt,image_url,category,published_at,created_at')
+    .eq('published', true).order('published_at', { ascending: false }).limit(3)
+    .then(function(res) {
+      var posts = res.data || [];
+      if (!posts.length) { grid.innerHTML = '<p class="news-empty">No updates yet — check back soon.</p>'; return; }
+      grid.innerHTML = posts.map(function(p) {
+        var d = new Date(p.published_at || p.created_at).toLocaleDateString('en-NG', { day:'numeric', month:'long', year:'numeric' });
+        var img = p.image_url ? ' style="background-image:url(\'' + esc(p.image_url) + '\')"' : '';
+        return '<a class="news-card" href="post.html?id=' + esc(p.slug) + '">' +
+          '<div class="news-img"><div class="news-img-inner"' + img + '></div></div>' +
+          '<div class="news-body"><div class="news-meta"><span class="news-cat">' + esc(p.category || 'Update') + '</span><span class="news-date">' + d + '</span></div>' +
+          '<div class="news-title">' + esc(p.title) + '</div>' +
+          (p.excerpt ? '<div class="news-excerpt">' + esc(p.excerpt) + '</div>' : '') +
+          '<span class="news-read">Read More <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>' +
+          '</div></a>';
+      }).join('');
+    }).catch(function() { grid.innerHTML = '<p class="news-empty">Could not load updates.</p>'; });
+})();
+
+/* Join form */
+document.getElementById('join-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var btn = document.getElementById('join-btn');
+  var msg = document.getElementById('join-msg');
+  btn.textContent = 'Submitting…'; btn.disabled = true;
+  try {
+    await sb.from('volunteers').insert({
+      full_name: document.getElementById('f-name').value.trim(),
+      phone:     document.getElementById('f-phone').value.trim(),
+      email:     document.getElementById('f-email').value.trim() || null,
+      lga:       document.getElementById('f-lga').value,
+      role:      document.getElementById('f-role').value,
+      joined_at: new Date().toISOString()
+    });
+    msg.style.color = '#4ADE80';
+    msg.textContent = '✓ Welcome to the movement! We will be in touch soon.';
+    this.reset();
+  } catch(err) {
+    msg.style.color = '#FCA5A5';
+    msg.textContent = 'Something went wrong. Please call our hotline to register.';
+  }
+  btn.textContent = 'Join the Movement →'; btn.disabled = false;
+});
+
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+/* ── Testimonials Horizontal Slider ── */
+(function() {
+  var slider = document.getElementById('end-slider');
+  var dotsWrap = document.getElementById('end-dots');
+  var prevBtn = document.getElementById('end-prev');
+  var nextBtn = document.getElementById('end-next');
+  if (!slider) return;
+
+  var cards = slider.querySelectorAll('.end-card');
+  var total = cards.length;
+  var current = 0;
+
+  function visibleCount() {
+    var w = window.innerWidth;
+    if (w >= 1024) return 3;
+    if (w >= 640) return 2;
+    return 1;
+  }
+
+  function maxIndex() { return Math.max(0, total - visibleCount()); }
+
+  function buildDots() {
+    dotsWrap.innerHTML = '';
+    var count = maxIndex() + 1;
+    for (var i = 0; i < count; i++) {
+      var d = document.createElement('span');
+      d.className = 'end-dot' + (i === current ? ' active' : '');
+      d.dataset.i = i;
+      d.addEventListener('click', function() { goTo(parseInt(this.dataset.i)); });
+      dotsWrap.appendChild(d);
+    }
+  }
+
+  function goTo(n) {
+    current = Math.max(0, Math.min(n, maxIndex()));
+    var cardW = cards[0].offsetWidth + 20;
+    slider.style.transform = 'translateX(-' + (current * cardW) + 'px)';
+    dotsWrap.querySelectorAll('.end-dot').forEach(function(d, i) { d.classList.toggle('active', i === current); });
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current >= maxIndex();
+  }
+
+  window.endSlide = function(dir) { goTo(current + dir); };
+
+  buildDots();
+  goTo(0);
+  window.addEventListener('resize', function() { buildDots(); goTo(0); });
+
+  var touchStartX = 0;
+  slider.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+  slider.addEventListener('touchend', function(e) {
+    var diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTo(current + (diff > 0 ? 1 : -1));
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>

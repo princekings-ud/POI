@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Admin — Ize-Iyamu 2027 Campaign</title>
+<meta name="robots" content="noindex,nofollow" />
+<link rel="icon" type="image/png" href="apc logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.snow.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/quill@2/dist/quill.js"></script>
+<style>
+:root{
+  --green:#1A5C38;--green-deep:#0D3D24;--green-mid:#1E6B41;
+  --gold:#C9A84C;--gold-warm:#E8C66A;--gold-pale:#F5DFA0;
+  --surf-1:#0F1A14;--surf-2:#162010;--surf-3:#1C2A18;
+  --charcoal:#2D2D2D;--white:#FFFFFF;
+  --line:rgba(255,255,255,0.08);--line-m:rgba(255,255,255,0.15);
+  --txt-1:rgba(255,255,255,0.90);--txt-2:rgba(255,255,255,0.55);--txt-3:rgba(255,255,255,0.30);
+  --serif:'Playfair Display','Times New Roman',serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --gold-grad:linear-gradient(135deg,#B8942A 0%,#C9A84C 50%,#E8C66A 100%);
+  --green-grad:linear-gradient(135deg,#0D3D24 0%,#1A5C38 60%,#0D3D24 100%);
+  --ease-out:cubic-bezier(0.22,1,0.36,1);
+  --success:#22C55E;--danger:#EF4444;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--surf-1);color:var(--txt-1);min-height:100vh;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+input,textarea,select{font-family:inherit}
+img{display:block;max-width:100%}
+.hidden{display:none!important}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;font-weight:600;padding:11px 22px;cursor:pointer;border:none;transition:opacity 0.2s,transform 0.15s,box-shadow 0.2s}
+.btn:hover{opacity:0.88;transform:translateY(-1px)}
+.btn:active{transform:translateY(0)}
+.btn-green{background:var(--green-grad);color:var(--white)}
+.btn-green:hover{box-shadow:0 12px 32px -12px rgba(26,92,56,0.55)}
+.btn-gold{background:var(--gold-grad);color:var(--green-deep)}
+.btn-gold:hover{box-shadow:0 12px 32px -12px rgba(201,168,76,0.55)}
+.btn-ghost{background:transparent;color:var(--txt-2);border:1px solid var(--line-m)}
+.btn-ghost:hover{color:var(--txt-1);border-color:rgba(255,255,255,0.28)}
+.btn-danger{background:var(--danger);color:var(--white)}
+.btn-sm{padding:8px 16px;font-size:10px}
+.btn-icon{padding:9px;aspect-ratio:1}
+
+/* BADGES */
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;padding:4px 10px;white-space:nowrap}
+.badge-live{background:rgba(34,197,94,0.12);color:#4ADE80}
+.badge-live::before{content:'';width:6px;height:6px;border-radius:50%;background:#22C55E;box-shadow:0 0 6px #22C55E;flex-shrink:0}
+.badge-draft{background:rgba(255,255,255,0.06);color:var(--txt-3)}
+.cat-tag{display:inline-block;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;padding:3px 9px;background:var(--green);color:var(--white)}
+
+/* TOAST */
+.toast{position:fixed;bottom:84px;left:50%;transform:translateX(-50%);z-index:9999;padding:13px 24px;font-size:13px;font-weight:500;border-left:3px solid var(--success);background:var(--surf-2);color:var(--txt-1);box-shadow:0 8px 40px rgba(0,0,0,0.5);opacity:0;transition:opacity 0.3s;pointer-events:none;white-space:nowrap;max-width:calc(100vw - 32px)}
+.toast.show{opacity:1}
+.toast.error{border-color:var(--danger)}
+@media(min-width:640px){.toast{bottom:32px}}
+
+/* LOGIN */
+#login-view{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;background:radial-gradient(ellipse at top,rgba(26,92,56,0.18) 0%,transparent 60%)}
+.login-brand{margin-bottom:32px;text-align:center}
+.login-brand-logo{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:12px}
+.login-poi{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid rgba(201,168,76,0.45)}
+.login-apc{width:36px;height:36px;object-fit:contain}
+.login-brand .name{font-family:var(--serif);font-weight:700;font-size:22px;letter-spacing:0.04em;color:var(--white);display:block}
+.login-brand .tag{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);display:block;margin-top:5px}
+.login-card{width:100%;max-width:400px;background:var(--surf-2);border:1px solid var(--line);border-top:3px solid var(--gold);padding:32px 28px}
+.login-title{font-family:var(--serif);font-size:26px;font-weight:600;color:var(--txt-1);margin-bottom:6px}
+.login-sub{font-size:13px;color:var(--txt-2);margin-bottom:28px;line-height:1.5}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--txt-3);margin-bottom:8px;font-weight:500}
+.field input{width:100%;padding:13px 14px;background:var(--surf-1);border:1px solid var(--line);color:var(--txt-1);font-size:14px;outline:none;transition:border-color 0.2s}
+.field input:focus{border-color:var(--gold)}
+.login-err{font-size:13px;color:var(--danger);margin-bottom:16px;min-height:20px;line-height:1.5;display:none}
+.login-err.show{display:block}
+.login-btn{width:100%;padding:15px;background:var(--gold-grad);color:var(--green-deep);font-family:var(--sans);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;cursor:pointer;border:none;transition:opacity 0.2s}
+.login-btn:hover{opacity:0.88}
+.login-btn:disabled{opacity:0.5;cursor:not-allowed}
+.login-view-link{text-align:center;margin-top:18px;font-size:12px;color:var(--txt-3)}
+.login-view-link a{color:var(--gold);text-underline-offset:3px;text-decoration:underline}
+
+/* ADMIN HEADER */
+.admin-hdr{position:sticky;top:0;z-index:50;background:rgba(13,61,36,0.97);border-bottom:1px solid rgba(201,168,76,0.15);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:0 16px;display:flex;align-items:center;justify-content:space-between;height:56px;gap:12px}
+.admin-brand{display:flex;align-items:center;gap:10px}
+.admin-brand img{width:30px;height:30px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(201,168,76,0.40)}
+.admin-brand .name{font-family:var(--serif);font-weight:700;font-size:15px;color:var(--white)}
+.admin-brand .tag{font-size:7px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold)}
+.admin-user{font-size:12px;color:var(--txt-3);display:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:160px}
+.admin-hdr-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+@media(min-width:480px){.admin-user{display:block}}
+@media(min-width:640px){.admin-hdr{padding:0 28px}}
+
+/* DASHBOARD */
+#dashboard-view{display:none}
+.dash-body{max-width:900px;margin:0 auto;padding:28px 16px 80px}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:32px}
+.stat-box{background:var(--surf-2);border:1px solid var(--line);border-top:3px solid var(--gold);padding:18px 20px;text-align:center}
+.stat-n{font-family:var(--serif);font-size:clamp(26px,5vw,36px);font-weight:700;color:var(--txt-1);line-height:1;margin-bottom:5px}
+.stat-n.gold{color:var(--gold)}
+.stat-l{font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--txt-3)}
+.dash-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;gap:12px;flex-wrap:wrap}
+.dash-row h2{font-family:var(--serif);font-size:clamp(20px,4vw,28px);font-weight:600;color:var(--txt-1)}
+.posts-list{display:flex;flex-direction:column;gap:2px}
+.post-card{background:var(--surf-2);border:1px solid var(--line);padding:18px;transition:border-color 0.25s,background 0.25s;position:relative}
+.post-card:hover{border-color:rgba(201,168,76,0.35);background:var(--surf-3)}
+.post-card-header{display:flex;flex-direction:column;gap:10px;margin-bottom:12px}
+.post-card-title{font-family:var(--serif);font-size:clamp(16px,3vw,20px);font-weight:600;color:var(--txt-1);line-height:1.25}
+.post-card-badges{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.post-card-slug{font-size:11px;color:var(--txt-3);margin-bottom:14px;word-break:break-all;line-height:1.4}
+.post-card-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.post-card-date{font-size:12px;color:var(--txt-3)}
+.post-card-actions{display:flex;gap:8px}
+.empty-state{background:var(--surf-2);border:1px solid var(--line);border-top:3px solid rgba(201,168,76,0.25);padding:60px 24px;text-align:center}
+.empty-state svg{margin:0 auto 16px;color:var(--txt-3)}
+.empty-state p{font-size:14px;color:var(--txt-3);margin-bottom:24px}
+
+/* EDITOR */
+#editor-view{display:none}
+.editor-hdr-title{font-family:var(--serif);font-size:16px;color:var(--txt-1);font-weight:600;flex:1;text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 8px}
+.editor-back{display:flex;align-items:center;gap:6px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--txt-3);cursor:pointer;transition:color 0.2s;flex-shrink:0}
+.editor-back:hover{color:var(--txt-1)}
+.editor-hdr-actions{display:none;gap:8px;flex-shrink:0}
+@media(min-width:600px){.editor-hdr-actions{display:flex}}
+.editor-action-bar{position:fixed;bottom:0;left:0;right:0;z-index:60;background:rgba(13,61,36,0.98);border-top:1px solid rgba(201,168,76,0.15);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:12px 16px;display:flex;gap:10px}
+.editor-action-bar .btn{flex:1}
+@media(min-width:600px){.editor-action-bar{display:none}}
+.editor-body{max-width:800px;margin:0 auto;padding:28px 16px 110px}
+@media(min-width:600px){.editor-body{padding-bottom:64px}}
+@media(min-width:640px){.editor-body{padding:36px 24px 64px}}
+@media(min-width:900px){.editor-body{padding:40px 40px 64px}}
+
+/* FORM */
+.form-section{margin-bottom:32px}
+.form-section-label{font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(201,168,76,0.20);display:block}
+.form-row{margin-bottom:18px}
+.form-row label{display:block;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--txt-3);margin-bottom:8px;font-weight:500}
+.form-row input,.form-row select,.form-row textarea{width:100%;padding:12px 14px;background:var(--surf-2);border:1px solid var(--line);color:var(--txt-1);font-size:14px;outline:none;transition:border-color 0.2s;resize:vertical}
+.form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--gold)}
+.form-row select option{background:var(--surf-1)}
+.form-row textarea{min-height:78px;line-height:1.6}
+.form-hint{font-size:11px;color:var(--txt-3);margin-top:5px;line-height:1.5}
+.form-hint code{font-size:11px;background:var(--surf-2);padding:1px 5px;border-radius:2px}
+.form-grid{display:grid;grid-template-columns:1fr;gap:0}
+@media(min-width:480px){.form-grid{grid-template-columns:1fr 1fr;gap:16px}}
+
+/* ── MOBILE ── */
+@media(max-width:479px){
+  .admin-brand .tag{display:none}
+  .stats-row{grid-template-columns:1fr 1fr;gap:6px}
+  .stat-box{padding:14px 12px}
+  .stat-n{font-size:clamp(20px,7vw,30px)}
+  .dash-body{padding:16px 12px 80px}
+  .login-card{padding:24px 18px}
+  .post-card{padding:14px}
+  .post-card-footer{flex-direction:column;align-items:flex-start;gap:8px}
+  .post-card-actions{width:100%;display:flex;justify-content:flex-end}
+  .editor-body{padding:20px 12px 110px}
+  .empty-state{padding:40px 16px}
+}
+
+/* IMAGE */
+.img-preview{width:100%;aspect-ratio:16/9;background:var(--surf-2);border:1px dashed var(--line-m);display:flex;align-items:center;justify-content:center;color:var(--txt-3);font-size:13px;margin-bottom:10px;overflow:hidden;cursor:pointer;transition:border-color 0.2s;position:relative}
+.img-preview:hover{border-color:var(--gold)}
+.img-preview-text{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:13px;color:var(--txt-3);text-align:center;padding:0 16px}
+#img-input{display:none}
+.img-status{font-size:11px;color:var(--txt-3);margin-top:5px;min-height:16px}
+
+/* QUILL */
+.ql-toolbar.ql-snow{background:var(--surf-2);border:1px solid var(--line)!important;border-bottom:none!important}
+.ql-container.ql-snow{border:1px solid var(--line)!important;background:var(--surf-1)}
+.ql-editor{min-height:280px;font-size:15px;line-height:1.8;color:var(--txt-1);font-family:var(--sans)}
+.ql-editor p{color:var(--txt-2)}
+.ql-snow .ql-stroke{stroke:var(--txt-2)!important}
+.ql-snow .ql-fill{fill:var(--txt-2)!important}
+.ql-snow .ql-picker{color:var(--txt-2)!important}
+.ql-snow .ql-picker-options{background:var(--surf-2)!important;border-color:var(--line)!important}
+.ql-snow .ql-active .ql-stroke,.ql-snow button:hover .ql-stroke{stroke:var(--gold)!important}
+.ql-snow .ql-active .ql-fill,.ql-snow button:hover .ql-fill{fill:var(--gold)!important}
+.ql-editor.ql-blank::before{color:var(--txt-3)!important;font-style:normal!important}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-view">
+  <div class="login-brand">
+    <div class="login-brand-logo">
+      <img src="poi logo.jpeg" class="login-poi" alt="POI logo">
+      <img src="apc logo.png" class="login-apc" alt="APC logo">
+    </div>
+    <span class="name">Ize-Iyamu 2027</span>
+    <span class="tag">Campaign Admin Portal</span>
+  </div>
+  <div class="login-card">
+    <h1 class="login-title">Admin Sign In</h1>
+    <p class="login-sub">Sign in to manage press releases and campaign updates.</p>
+    <form id="login-form" novalidate>
+      <div class="field">
+        <label for="f-email">Email Address</label>
+        <input id="f-email" type="email" placeholder="you@example.com" required autocomplete="email" />
+      </div>
+      <div class="field">
+        <label for="f-password">Password</label>
+        <input id="f-password" type="password" placeholder="••••••••" required autocomplete="current-password" />
+      </div>
+      <p class="login-err" id="login-err"></p>
+      <button class="login-btn" id="login-btn" type="submit">Sign In &rarr;</button>
+    </form>
+  </div>
+  <p class="login-view-link">← <a href="index.html">Back to Campaign Site</a></p>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard-view">
+  <header class="admin-hdr">
+    <div class="admin-brand">
+      <img src="poi logo.jpeg" alt="POI">
+      <div><div class="name">POI 2027</div><div class="tag">Admin</div></div>
+    </div>
+    <div class="admin-hdr-right">
+      <span class="admin-user" id="admin-email"></span>
+      <a href="index.html" class="btn btn-ghost btn-sm">View Site</a>
+      <button class="btn btn-ghost btn-sm" id="logout-btn">Sign Out</button>
+    </div>
+  </header>
+  <div class="dash-body">
+    <div class="stats-row">
+      <div class="stat-box"><div class="stat-n gold" id="stat-total">—</div><div class="stat-l">Total Posts</div></div>
+      <div class="stat-box"><div class="stat-n" id="stat-live">—</div><div class="stat-l">Published</div></div>
+      <div class="stat-box"><div class="stat-n" id="stat-draft">—</div><div class="stat-l">Drafts</div></div>
+    </div>
+    <div class="dash-row">
+      <h2>All Press Releases</h2>
+      <button class="btn btn-gold" id="new-post-btn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        New Post
+      </button>
+    </div>
+    <div class="posts-list" id="posts-list">
+      <div class="empty-state">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
+        <p>Loading posts…</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EDITOR -->
+<div id="editor-view">
+  <header class="admin-hdr">
+    <button class="editor-back" id="editor-back-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Posts
+    </button>
+    <span class="editor-hdr-title" id="editor-title-bar">New Post</span>
+    <div class="editor-hdr-actions">
+      <button class="btn btn-ghost btn-sm" id="save-draft-btn">Save Draft</button>
+      <button class="btn btn-gold btn-sm" id="publish-btn">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        Publish
+      </button>
+    </div>
+  </header>
+
+  <div class="editor-body">
+    <div class="form-section">
+      <span class="form-section-label">Post Details</span>
+      <div class="form-row">
+        <label for="f-title">Title *</label>
+        <input id="f-title" type="text" placeholder="Enter press release title…" />
+      </div>
+      <div class="form-grid">
+        <div class="form-row">
+          <label for="f-slug">URL Slug</label>
+          <input id="f-slug" type="text" placeholder="auto-generated-from-title" />
+          <p class="form-hint">Link: <code>post.html?id=<span id="slug-preview">…</span></code></p>
+        </div>
+        <div class="form-row">
+          <label for="f-category">Category</label>
+          <select id="f-category">
+            <option>News</option>
+            <option>Press Release</option>
+            <option>Announcement</option>
+            <option>Policy</option>
+            <option>Event</option>
+            <option>Achievement</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="f-excerpt">Excerpt <span style="font-size:10px;opacity:0.5;text-transform:none;letter-spacing:0">(short summary shown on the press releases page)</span></label>
+        <textarea id="f-excerpt" rows="2" placeholder="One or two sentences describing this release…"></textarea>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <span class="form-section-label">Cover Image</span>
+      <div class="img-preview" id="img-preview" role="button" tabindex="0" aria-label="Upload cover image">
+        <div class="img-preview-text">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          Tap to upload a cover image
+        </div>
+      </div>
+      <input type="file" id="img-input" accept="image/*" />
+      <p class="img-status" id="img-status"></p>
+      <input type="hidden" id="f-image-url" />
+    </div>
+
+    <div class="form-section">
+      <span class="form-section-label">Body Content *</span>
+      <div id="quill-editor"></div>
+      <p class="form-hint" style="margin-top:10px">Use the toolbar to add headings, bold, bullet lists, and links.</p>
+    </div>
+
+    <input type="hidden" id="f-post-id" />
+  </div>
+
+  <div class="editor-action-bar">
+    <button class="btn btn-ghost" id="save-draft-mob">Save Draft</button>
+    <button class="btn btn-gold" id="publish-mob">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      Publish
+    </button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+var SB_URL = 'https://iurnsfwoqpncbjjfqgwc.supabase.co';
+var SB_KEY = 'sb_publishable_77ro4nlH4bKjbQ6mHE0XjA_6xWJWZLv';
+
+var sb = supabase.createClient(SB_URL, SB_KEY);
+var quill;
+var postsCache = {};
+
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function toSlug(s) { return s.toLowerCase().trim().replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').substring(0,80); }
+function showToast(msg, isError) {
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (isError ? ' error' : '');
+  setTimeout(function() { t.classList.remove('show'); }, 3400);
+}
+function showErr(msg) {
+  var el = document.getElementById('login-err');
+  el.textContent = msg;
+  el.classList.toggle('show', !!msg);
+}
+
+/* AUTH */
+sb.auth.onAuthStateChange(function(event, session) {
+  if (session) {
+    document.getElementById('login-view').style.display    = 'none';
+    document.getElementById('dashboard-view').style.display = 'block';
+    document.getElementById('editor-view').style.display   = 'none';
+    document.getElementById('admin-email').textContent = session.user.email;
+    loadPosts();
+  } else {
+    document.getElementById('login-view').style.display    = 'flex';
+    document.getElementById('dashboard-view').style.display = 'none';
+    document.getElementById('editor-view').style.display   = 'none';
+  }
+});
+
+document.getElementById('login-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var btn = document.getElementById('login-btn');
+  btn.disabled = true;
+  btn.textContent = 'Signing in…';
+  showErr('');
+  var res = await sb.auth.signInWithPassword({
+    email:    document.getElementById('f-email').value.trim(),
+    password: document.getElementById('f-password').value
+  });
+  if (res.error) {
+    showErr('Incorrect email or password. Please try again.');
+    btn.disabled = false;
+    btn.textContent = 'Sign In →';
+  }
+});
+
+document.getElementById('logout-btn').addEventListener('click', function() { sb.auth.signOut(); });
+
+/* DASHBOARD */
+async function loadPosts() {
+  var res = await sb.from('posts')
+    .select('id,title,slug,category,published,published_at,created_at')
+    .order('created_at', { ascending: false });
+  var posts = res.data || [];
+  postsCache = {};
+  posts.forEach(function(p) { postsCache[p.id] = p; });
+
+  var live  = posts.filter(function(p) { return p.published; }).length;
+  var draft = posts.length - live;
+  document.getElementById('stat-total').textContent = posts.length;
+  document.getElementById('stat-live').textContent  = live;
+  document.getElementById('stat-draft').textContent = draft;
+
+  var list = document.getElementById('posts-list');
+  if (!posts.length) {
+    list.innerHTML =
+      '<div class="empty-state">' +
+        '<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6M12 11v6M9 14h6"/></svg>' +
+        '<p>No posts yet — create your first press release.</p>' +
+        '<button class="btn btn-gold" onclick="openEditor(null)">Create First Post</button>' +
+      '</div>';
+    return;
+  }
+
+  list.innerHTML = posts.map(function(p) {
+    var d = new Date(p.published_at || p.created_at).toLocaleDateString('en-NG', { day:'numeric', month:'short', year:'numeric' });
+    return (
+      '<div class="post-card">' +
+        '<div class="post-card-header">' +
+          '<div class="post-card-title">' + esc(p.title) + '</div>' +
+          '<div class="post-card-badges">' +
+            '<span class="cat-tag">' + esc(p.category || 'News') + '</span>' +
+            '<span class="badge ' + (p.published ? 'badge-live' : 'badge-draft') + '">' + (p.published ? 'Live' : 'Draft') + '</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="post-card-slug">post.html?id=' + esc(p.slug) + '</div>' +
+        '<div class="post-card-footer">' +
+          '<span class="post-card-date">' + d + '</span>' +
+          '<div class="post-card-actions">' +
+            '<button class="btn btn-ghost btn-sm" onclick="togglePublish(\'' + p.id + '\',' + p.published + ')">' + (p.published ? '&#9723; Unpublish' : '&#9654; Publish') + '</button>' +
+            '<button class="btn btn-ghost btn-sm" onclick="editPost(\'' + p.id + '\')">&#9998; Edit</button>' +
+            '<button class="btn btn-danger btn-sm" onclick="deletePost(\'' + p.id + '\')">&#10005; Delete</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>'
+    );
+  }).join('');
+}
+
+document.getElementById('new-post-btn').addEventListener('click', function() { openEditor(null); });
+
+/* EDITOR */
+function initQuill() {
+  if (quill) return;
+  quill = new Quill('#quill-editor', {
+    theme: 'snow',
+    placeholder: 'Write your press release here…',
+    modules: { toolbar: [
+      [{ header: [2, 3, false] }],
+      ['bold', 'italic', 'underline'],
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      ['link', 'blockquote'],
+      ['clean']
+    ]}
+  });
+}
+
+function openEditor(postId) {
+  initQuill();
+  document.getElementById('dashboard-view').style.display = 'none';
+  document.getElementById('editor-view').style.display    = 'block';
+  document.getElementById('f-post-id').value = postId || '';
+  document.getElementById('img-status').textContent       = '';
+  document.getElementById('img-input').value              = '';
+  window.scrollTo(0, 0);
+  if (!postId) {
+    document.getElementById('editor-title-bar').textContent = 'New Post';
+    document.getElementById('f-title').value    = '';
+    document.getElementById('f-slug').value     = '';
+    document.getElementById('slug-preview').textContent = '…';
+    document.getElementById('f-excerpt').value  = '';
+    document.getElementById('f-category').value = 'News';
+    document.getElementById('f-image-url').value = '';
+    resetImgPreview();
+    quill.setContents([]);
+  }
+}
+
+async function editPost(id) {
+  var res = await sb.from('posts').select('*').eq('id', id).single();
+  var p = res.data;
+  if (!p) { showToast('Could not load post.', true); return; }
+  openEditor(id);
+  document.getElementById('editor-title-bar').textContent = 'Edit Post';
+  document.getElementById('f-title').value    = p.title    || '';
+  document.getElementById('f-slug').value     = p.slug     || '';
+  document.getElementById('slug-preview').textContent = p.slug || '…';
+  document.getElementById('f-excerpt').value  = p.excerpt  || '';
+  document.getElementById('f-category').value = p.category || 'News';
+  document.getElementById('f-image-url').value = p.image_url || '';
+  if (p.image_url) showImgPreview(p.image_url); else resetImgPreview();
+  quill.clipboard.dangerouslyPasteHTML(p.body || '');
+}
+
+document.getElementById('editor-back-btn').addEventListener('click', function() {
+  document.getElementById('editor-view').style.display    = 'none';
+  document.getElementById('dashboard-view').style.display = 'block';
+  loadPosts();
+});
+
+document.getElementById('f-title').addEventListener('input', function() {
+  var slug = toSlug(this.value);
+  document.getElementById('f-slug').value = slug;
+  document.getElementById('slug-preview').textContent = slug || '…';
+});
+document.getElementById('f-slug').addEventListener('input', function() {
+  document.getElementById('slug-preview').textContent = this.value || '…';
+});
+
+document.getElementById('save-draft-btn').addEventListener('click', function() { savePost(false); });
+document.getElementById('publish-btn').addEventListener('click', function() { savePost(true); });
+document.getElementById('save-draft-mob').addEventListener('click', function() { savePost(false); });
+document.getElementById('publish-mob').addEventListener('click', function() { savePost(true); });
+
+async function savePost(publish) {
+  var title = document.getElementById('f-title').value.trim();
+  var slug  = document.getElementById('f-slug').value.trim();
+  if (!title) { showToast('Please enter a title.', true); return; }
+  if (!slug)  { showToast('Please enter a URL slug.', true); return; }
+
+  var data = {
+    title:     title,
+    slug:      slug,
+    excerpt:   document.getElementById('f-excerpt').value.trim(),
+    body:      quill.root.innerHTML,
+    category:  document.getElementById('f-category').value,
+    image_url: document.getElementById('f-image-url').value || null,
+    published: publish
+  };
+  if (publish) data.published_at = new Date().toISOString();
+
+  var id = document.getElementById('f-post-id').value;
+  var res = id
+    ? await sb.from('posts').update(data).eq('id', id)
+    : await sb.from('posts').insert(data);
+
+  if (res.error) { showToast('Error: ' + res.error.message, true); return; }
+  showToast(publish ? 'Post published — now live on the campaign site.' : 'Draft saved successfully.');
+  setTimeout(function() {
+    document.getElementById('editor-view').style.display    = 'none';
+    document.getElementById('dashboard-view').style.display = 'block';
+    loadPosts();
+  }, 1400);
+}
+
+async function deletePost(id) {
+  var p = postsCache[id];
+  var title = p ? p.title : 'this post';
+  if (!confirm('Delete "' + title + '"?\n\nThis cannot be undone.')) return;
+  var res = await sb.from('posts').delete().eq('id', id);
+  if (res.error) { showToast('Delete failed: ' + res.error.message, true); return; }
+  showToast('Post deleted.');
+  loadPosts();
+}
+
+async function togglePublish(id, isPublished) {
+  var data = { published: !isPublished };
+  if (!isPublished) data.published_at = new Date().toISOString();
+  var res = await sb.from('posts').update(data).eq('id', id);
+  if (res.error) { showToast('Error: ' + res.error.message, true); return; }
+  showToast(isPublished ? 'Post unpublished — moved to drafts.' : 'Post published — now live.');
+  loadPosts();
+}
+
+/* IMAGE UPLOAD */
+var imgPreviewEl = document.getElementById('img-preview');
+imgPreviewEl.addEventListener('click', function() { document.getElementById('img-input').click(); });
+imgPreviewEl.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); document.getElementById('img-input').click(); }
+});
+
+document.getElementById('img-input').addEventListener('change', async function() {
+  var file = this.files[0];
+  if (!file) return;
+  var status = document.getElementById('img-status');
+  status.textContent = 'Uploading image…';
+  try {
+    var ext  = file.name.split('.').pop().toLowerCase();
+    var name = Date.now() + '-' + Math.random().toString(36).slice(2,7) + '.' + ext;
+    var up   = await sb.storage.from('post-images').upload(name, file, { contentType: file.type, upsert: false });
+    if (up.error) throw up.error;
+    var url = sb.storage.from('post-images').getPublicUrl(name).data.publicUrl;
+    document.getElementById('f-image-url').value = url;
+    showImgPreview(url);
+    status.textContent = '✓ Image uploaded successfully.';
+  } catch(e) {
+    status.textContent = 'Upload failed: ' + e.message;
+  }
+});
+
+function showImgPreview(url) {
+  var wrap = document.getElementById('img-preview');
+  wrap.innerHTML =
+    '<img src="' + esc(url) + '" alt="Cover" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" />' +
+    '<div style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0">' +
+      '<span style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#fff;font-weight:600">Change Image</span>' +
+    '</div>';
+  wrap.style.position = 'relative';
+}
+
+function resetImgPreview() {
+  document.getElementById('img-preview').innerHTML =
+    '<div class="img-preview-text">' +
+      '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>' +
+      'Tap to upload a cover image' +
+    '</div>';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Press Release — Ize-Iyamu 2027</title>
+<link rel="icon" type="image/png" href="apc logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<style>
+:root{
+  --green:#1A5C38;--green-deep:#0D3D24;--green-mid:#1E6B41;
+  --gold:#C9A84C;--gold-warm:#E8C66A;--gold-pale:#F5DFA0;
+  --ivory:#F9F7F2;--ivory-2:#F0EDE6;
+  --charcoal:#2D2D2D;--grey:#6B6B6B;--light-grey:#E8E8E8;--white:#FFFFFF;
+  --line:rgba(0,0,0,0.09);--line-m:rgba(0,0,0,0.16);
+  --serif:'Playfair Display','Times New Roman',serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --gold-grad:linear-gradient(135deg,#B8942A 0%,#C9A84C 50%,#E8C66A 100%);
+  --ease-out:cubic-bezier(0.22,1,0.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--ivory);color:var(--charcoal);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{background:none;border:none;cursor:pointer;font-family:inherit}
+img{display:block;max-width:100%}
+.container{max-width:1280px;margin:0 auto;padding:0 16px}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px;display:flex;align-items:center;justify-content:space-between;background:var(--green-deep);transition:padding 0.3s ease,box-shadow 0.3s ease}
+.nav.scrolled{box-shadow:0 2px 28px rgba(0,0,0,0.32);padding:10px 16px}
+.nav-brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.nav-party-logo{width:36px;height:36px;object-fit:contain}
+.nav-wordmark{display:flex;flex-direction:column;line-height:1}
+.nav-wordmark .name{font-family:var(--serif);font-weight:700;font-size:13px;letter-spacing:0.04em;color:var(--white)}
+.nav-wordmark .tag{font-size:8px;letter-spacing:0.3em;color:var(--gold);margin-top:4px;text-transform:uppercase;font-weight:500}
+.nav-links{display:none;gap:28px;align-items:center}
+.nav-links a{font-size:12px;letter-spacing:0.05em;color:rgba(255,255,255,0.65);transition:color 0.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold-warm)}
+.nav-cta-desktop{display:none;align-items:center;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;padding:10px 18px;background:var(--gold-grad);color:var(--green-deep);margin-left:4px;transition:transform 0.2s,box-shadow 0.2s;border-radius:3px;cursor:pointer}
+.nav-cta-desktop:hover{transform:translateY(-1px);box-shadow:0 10px 24px -12px rgba(201,168,76,0.65)}
+.nav-burger{display:flex;flex-direction:column;gap:5px;width:32px;padding:4px 0;cursor:pointer}
+.nav-burger span{display:block;width:100%;height:1.5px;background:var(--white);transition:transform 0.3s,opacity 0.3s}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;inset:0;z-index:99;background:var(--green-deep);flex-direction:column;align-items:center;justify-content:center;gap:32px;opacity:0;transition:opacity 0.35s ease}
+.mobile-menu.open{display:flex;opacity:1}
+.mobile-menu a{font-family:var(--serif);font-size:28px;letter-spacing:0.06em;color:var(--white);transition:color 0.2s}
+.mobile-menu a:hover{color:var(--gold)}
+.mobile-menu .mobile-cta{font-family:var(--sans);font-size:12px;letter-spacing:0.24em;text-transform:uppercase;font-weight:600;padding:14px 32px;background:var(--gold-grad);color:var(--green-deep);margin-top:12px;border-radius:3px;cursor:pointer}
+
+/* ── POST HERO ── */
+.post-hero{margin-top:64px;position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--green-deep) top center/cover no-repeat;max-height:520px}
+.post-hero-no-img{height:180px;background:var(--green-deep);margin-top:64px}
+.post-back{position:absolute;top:20px;left:20px;z-index:2;display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;font-weight:600;color:var(--charcoal);background:rgba(255,255,255,0.88);padding:8px 16px;border-radius:2px;border:1px solid rgba(0,0,0,0.12);transition:color 0.2s,background 0.2s;backdrop-filter:blur(8px)}
+.post-back:hover{color:var(--green);background:rgba(255,255,255,1)}
+
+/* ── POST HEADER ── */
+.post-header{background:var(--white);padding:36px 0 0;border-bottom:1px solid var(--light-grey)}
+.post-meta-bar{display:flex;align-items:center;gap:14px;margin-bottom:20px;flex-wrap:wrap}
+.post-cat{font-size:9px;letter-spacing:0.28em;text-transform:uppercase;font-weight:700;background:var(--green);color:var(--white);padding:4px 10px}
+.post-date{font-size:12px;color:var(--grey)}
+.post-readtime{font-size:12px;color:var(--grey)}
+.post-title{font-family:var(--serif);font-weight:900;font-size:clamp(26px,5vw,52px);line-height:1.06;letter-spacing:-0.012em;color:var(--charcoal);margin-bottom:28px}
+.post-divider{border:none;border-top:3px solid var(--gold);max-width:60px;margin:0 0 0}
+
+/* ── POST BODY ── */
+.post-body-wrap{background:var(--white);padding:44px 0 72px}
+.post-layout{display:grid;grid-template-columns:1fr;gap:48px}
+.post-body *{background-color:transparent!important;color:#000000!important}
+.post-body p{font-size:16px;line-height:1.85;color:#000000;margin-bottom:22px}
+.post-body h2{font-family:var(--serif);font-size:clamp(22px,3vw,34px);font-weight:700;color:var(--charcoal);line-height:1.2;margin:40px 0 16px;padding-bottom:10px;border-bottom:2px solid var(--light-grey)}
+.post-body h3{font-family:var(--serif);font-size:clamp(18px,2.5vw,26px);font-weight:700;color:var(--charcoal);line-height:1.2;margin:30px 0 12px}
+.post-body ul,.post-body ol{padding-left:24px;margin-bottom:22px}
+.post-body li{font-size:16px;line-height:1.78;color:#000000;margin-bottom:8px}
+.post-body strong{color:var(--charcoal);font-weight:700}
+.post-body em{font-style:italic;color:var(--charcoal)}
+.post-body blockquote{border-left:4px solid var(--gold);padding:18px 22px;margin:32px 0;background:var(--ivory-2);border-radius:0 4px 4px 0}
+.post-body blockquote p{color:var(--charcoal);font-size:17px;font-style:italic;font-family:var(--serif);margin:0;line-height:1.72}
+.post-body img{max-width:100%;margin:28px 0;border-radius:4px}
+.post-body a{color:var(--green);text-decoration:underline;text-underline-offset:3px}
+.post-error{padding:80px 0;text-align:center;color:var(--grey)}
+.post-error h2{font-family:var(--serif);font-size:32px;color:var(--charcoal);margin-bottom:12px}
+
+/* Post sidebar */
+.post-sidebar{}
+.sidebar-card{background:var(--ivory-2);border:1px solid var(--light-grey);padding:24px;margin-bottom:20px}
+.sidebar-card h4{font-family:var(--serif);font-size:16px;font-weight:700;color:var(--charcoal);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--gold)}
+.sidebar-card p{font-size:13px;color:var(--grey);line-height:1.7;margin-bottom:14px}
+.sidebar-btn{display:block;width:100%;text-align:center;padding:12px;background:var(--gold-grad);color:var(--green-deep);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;border-radius:3px;transition:transform 0.2s,box-shadow 0.2s}
+.sidebar-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px -8px rgba(201,168,76,0.45)}
+.sidebar-btn-outline{display:block;width:100%;text-align:center;padding:12px;background:transparent;color:var(--green);font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;border:2px solid var(--green);border-radius:3px;transition:all 0.2s;margin-top:10px}
+.sidebar-btn-outline:hover{background:var(--green);color:var(--white)}
+
+/* ── RELATED ── */
+.related{padding:56px 0;background:var(--ivory-2);border-top:3px solid var(--gold)}
+.related-head{margin-bottom:32px}
+.related-lbl{display:inline-flex;align-items:center;gap:12px;font-size:11px;letter-spacing:0.28em;text-transform:uppercase;font-weight:600;color:var(--green);margin-bottom:10px}
+.related-lbl::before{content:"";display:inline-block;width:30px;height:1.5px;background:var(--green);flex-shrink:0}
+.related h3{font-family:var(--serif);font-weight:900;font-size:clamp(22px,4vw,34px);color:var(--charcoal);line-height:1.08}
+.related-grid{display:grid;grid-template-columns:1fr;gap:16px}
+.rel-card{background:var(--white);border:1px solid var(--light-grey);display:block;overflow:hidden;transition:border-color 0.3s,transform 0.3s var(--ease-out),box-shadow 0.3s}
+.rel-card:hover{border-color:var(--green);transform:translateY(-3px);box-shadow:0 12px 32px -12px rgba(26,92,56,0.16)}
+.rel-img{aspect-ratio:16/9;overflow:hidden}
+.rel-img-inner{width:100%;height:100%;background:var(--light-grey) center/cover no-repeat;transition:transform 0.7s var(--ease-out)}
+.rel-card:hover .rel-img-inner{transform:scale(1.05)}
+.rel-body{padding:16px 18px 18px;border-top:3px solid transparent;transition:border-color 0.3s}
+.rel-card:hover .rel-body{border-color:var(--gold)}
+.rel-cat{font-size:8px;letter-spacing:0.26em;text-transform:uppercase;font-weight:700;color:var(--green);margin-bottom:6px}
+.rel-title{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--charcoal);line-height:1.25}
+
+/* ── CTA ── */
+.cta-section{padding:72px 0;background:var(--green);position:relative;overflow:hidden;text-align:center}
+.cta-section::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(120deg,rgba(255,255,255,0.035) 0 1px,transparent 1px 28px);pointer-events:none}
+.cta-inner{max-width:540px;margin:0 auto;position:relative;z-index:1}
+.lbl{display:inline-flex;align-items:center;gap:12px;font-size:11px;letter-spacing:0.28em;text-transform:uppercase;font-weight:600;color:var(--gold);margin-bottom:14px}
+.lbl::before{content:"";display:inline-block;width:30px;height:1.5px;background:var(--gold-grad);flex-shrink:0}
+.cta-inner h2{font-family:var(--serif);font-weight:900;font-size:clamp(24px,5vw,42px);line-height:1.06;color:var(--white);margin:8px 0 14px}
+.cta-inner p{font-size:14px;line-height:1.68;color:rgba(255,255,255,0.66);margin-bottom:28px}
+.btn-gold{display:inline-flex;align-items:center;gap:8px;font-size:12px;letter-spacing:0.12em;font-weight:700;padding:14px 28px;background:var(--gold-grad);color:var(--green-deep);border:none;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;border-radius:3px}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 14px 32px -14px rgba(201,168,76,0.55)}
+
+/* ── FOOTER ── */
+.footer{background:var(--green-deep);padding:64px 0 28px;position:relative}
+.footer-gold-bar{position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold-grad)}
+.footer-grid{display:grid;grid-template-columns:1fr;gap:36px}
+.footer-brand-logo{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.footer-party-logo{width:38px;height:38px;object-fit:contain}
+.footer-wm-name{font-family:var(--serif);font-weight:700;font-size:18px;color:var(--white)}
+.footer-wm-party{font-size:9px;letter-spacing:0.28em;color:var(--gold);margin-top:5px;text-transform:uppercase;display:block}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,0.40);line-height:1.75;margin-bottom:20px;max-width:260px}
+.footer-socials{display:flex;gap:8px}
+.footer-social{width:36px;height:36px;border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.38);display:flex;align-items:center;justify-content:center;transition:border-color 0.25s,color 0.25s,background 0.25s;border-radius:2px}
+.footer-social:hover{border-color:var(--gold);color:var(--gold);background:rgba(201,168,76,0.08)}
+.footer-col h5{font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;font-weight:600}
+.footer-col a,.footer-col address{display:block;font-size:13px;color:rgba(255,255,255,0.40);padding:4px 0;transition:color 0.2s;line-height:1.7;font-style:normal}
+.footer-col a:hover{color:rgba(255,255,255,0.82)}
+.footer-col .ci{display:flex;align-items:flex-start;gap:10px}
+.footer-col .ci svg{flex-shrink:0;margin-top:3px;color:var(--gold)}
+.footer-bottom{margin-top:48px;padding-top:22px;border-top:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;gap:6px;font-size:11px;color:rgba(255,255,255,0.28);letter-spacing:0.08em;text-align:center}
+.footer-tagline{color:var(--gold);font-style:italic;font-family:var(--serif);font-size:13px}
+
+/* ── RESPONSIVE ── */
+@media(min-width:640px){.container{padding:0 24px}.related-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:780px){.nav{padding:18px 32px}.nav.scrolled{padding:12px 32px}.nav-links{display:flex}.nav-cta-desktop{display:inline-flex}.nav-burger{display:none}.post-hero{margin-top:70px}.post-layout{grid-template-columns:1fr 300px}.footer-grid{grid-template-columns:1fr 1fr 1fr}}
+@media(min-width:900px){.nav{padding:18px 48px}.nav.scrolled{padding:12px 48px}.container{padding:0 40px}.related-grid{grid-template-columns:repeat(3,1fr)}.post-hero{margin-top:76px}}
+@media(min-width:1080px){.footer-grid{grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px}.footer-bottom{flex-direction:row;justify-content:space-between}}
+
+/* ── MOBILE ── */
+@media(max-width:479px){
+  .nav-wordmark .tag{display:none}
+  .post-hero{max-height:210px}
+  .post-back{font-size:10px;padding:6px 12px;top:10px;left:10px;gap:6px}
+  .post-header{padding:16px 0 0}
+  .post-meta-bar{gap:10px;margin-bottom:14px}
+  .post-title{font-size:clamp(20px,7vw,32px);margin-bottom:16px}
+  .post-body-wrap{padding:24px 0 44px}
+  .post-body p{font-size:15px;line-height:1.78;margin-bottom:18px}
+  .post-body h2{font-size:clamp(19px,6vw,28px);margin:26px 0 12px}
+  .post-body h3{font-size:clamp(17px,5vw,22px);margin:22px 0 10px}
+  .post-body blockquote{padding:14px 16px;margin:24px 0}
+  .sidebar-card{padding:16px 18px}
+  .related{padding:40px 0}
+  .related-grid{gap:12px}
+  .cta-section{padding:52px 0}
+  .footer{padding:40px 0 18px}
+  .footer-grid{gap:22px}
+  .footer-bottom{margin-top:32px;padding-top:18px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav-brand">
+    <img src="poi logo.jpeg" class="nav-party-logo" alt="POI logo" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid rgba(201,168,76,0.45)">
+    <img src="apc logo.png" class="nav-party-logo" alt="APC logo">
+    <div class="nav-wordmark">
+      <span class="name">Pastor (Dr.) Osagie Ize-Iyamu</span>
+      <span class="tag">Senate · Edo South · APC</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#about">About</a>
+    <a href="index.html#agenda">Agenda</a>
+    <a href="index.html#impact">Record</a>
+    <a href="index.html#promises">Promises</a>
+    <a href="blog.html" class="active">News</a>
+    <a href="index.html#contact">Contact</a>
+    <button class="nav-cta-desktop" onclick="location.href='index.html#donate'">Support Campaign</button>
+  </div>
+  <button class="nav-burger" id="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html#about">About</a>
+  <a href="index.html#agenda">Agenda</a>
+  <a href="index.html#impact">Record</a>
+  <a href="index.html#promises">Promises</a>
+  <a href="blog.html">News</a>
+  <a href="index.html#contact">Contact</a>
+  <button class="mobile-cta" onclick="location.href='index.html#donate'">Support Campaign</button>
+</div>
+
+<div id="post-hero-wrap"></div>
+<div id="post-content-wrap"></div>
+
+<section class="related" id="related-section" style="display:none">
+  <div class="container">
+    <div class="related-head">
+      <span class="related-lbl">More from the Campaign</span>
+      <h3>Recent Press Releases</h3>
+    </div>
+    <div class="related-grid" id="related-grid"></div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-inner">
+      <span class="lbl">Get Involved</span>
+      <h2>Join the Movement<br>for Edo South</h2>
+      <p>Every voice matters. Join thousands of Edo people already standing with Pastor (Dr.) Osagie Ize-Iyamu for Senate 2027.</p>
+      <a class="btn-gold" href="index.html#join">Join the Movement <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-gold-bar"></div>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand-logo">
+          <img src="poi logo.jpeg" class="footer-party-logo" alt="POI logo" style="border-radius:50%;object-fit:cover;border:2px solid rgba(201,168,76,0.35)">
+          <div><div class="footer-wm-name">Ize-Iyamu 2027</div><span class="footer-wm-party">APC · Edo South Senate</span></div>
+        </div>
+        <p>The official campaign of Pastor (Dr.) Osagie Ize-Iyamu for the Edo South Senatorial District — Senate 2027. Leadership. Service. Vision for Edo.</p>
+        <div class="footer-socials">
+          <a class="footer-social" href="https://web.facebook.com/pastorosagieizeiyamu/" aria-label="Facebook" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a class="footer-social" href="https://x.com/PastorIzeIyamu" aria-label="Twitter" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg></a>
+          <a class="footer-social" href="https://www.instagram.com/_pastorizeiyamu/" aria-label="Instagram" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+          <a class="footer-social" href="#" aria-label="YouTube" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Campaign</h5>
+        <a href="index.html#about">About Pastor POI</a>
+        <a href="index.html#agenda">Our Agenda</a>
+        <a href="index.html#impact">Track Record</a>
+        <a href="index.html#promises">Campaign Promises</a>
+        <a href="blog.html">Press Releases</a>
+        <a href="index.html#join">Get Involved</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <div class="ci"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-8 8-13a8 8 0 10-16 0c0 5 8 13 8 13z"/><circle cx="12" cy="9" r="3"/></svg><address>POI Campaign Office<br>Benin City, Edo State, Nigeria</address></div>
+        <div class="ci" style="margin-top:10px"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5h18v14H3zM3 5l9 8 9-8"/></svg><a href="mailto:campaign@izeiyamu2027.ng">campaign@izeiyamu2027.ng</a></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2027 Ize-Iyamu Senate Campaign · Edo South · All Rights Reserved</div>
+      <div class="footer-tagline">Leadership. Service. Vision for Edo.</div>
+      <div>Powered by APC · Nigeria's Progressive Party</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+var SB_URL = 'https://iurnsfwoqpncbjjfqgwc.supabase.co';
+var SB_KEY = 'sb_publishable_77ro4nlH4bKjbQ6mHE0XjA_6xWJWZLv';
+
+var slug = new URLSearchParams(location.search).get('id');
+if (!slug) {
+  showError('No post specified.', 'Back to all press releases');
+} else {
+  var sb = supabase.createClient(SB_URL, SB_KEY);
+  loadPost();
+}
+
+async function loadPost() {
+  try {
+    var res = await sb.from('posts').select('*').eq('slug', slug).eq('published', true).single();
+    if (res.error || !res.data) { showError('Post not found.', 'Back to all press releases'); return; }
+    var p = res.data;
+    document.title = p.title + ' — Ize-Iyamu 2027';
+    renderPost(p);
+    loadRelated(p.id);
+  } catch(e) { showError('Could not load post.', 'Back to all press releases'); }
+}
+
+function renderPost(p) {
+  var date = new Date(p.published_at || p.created_at).toLocaleDateString('en-NG', { day:'numeric', month:'long', year:'numeric' });
+  var words = (p.body || '').replace(/<[^>]*>/g,' ').split(/\s+/).filter(Boolean).length;
+  var readTime = Math.max(1, Math.ceil(words / 250));
+
+  document.getElementById('post-hero-wrap').innerHTML = p.image_url
+    ? '<div class="post-hero" style="background-image:url(\'' + esc(p.image_url) + '\')">' +
+        '<a class="post-back" href="blog.html">' +
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> All Press Releases' +
+        '</a>' +
+      '</div>'
+    : '<div class="post-hero-no-img">' +
+        '<a class="post-back" href="blog.html" style="position:relative;top:auto;left:auto;display:inline-flex;margin:20px;background:rgba(13,61,36,0.6)">' +
+          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 5l-7 7 7 7"/></svg> All Press Releases' +
+        '</a>' +
+      '</div>';
+
+  document.getElementById('post-content-wrap').innerHTML =
+    '<section class="post-header"><div class="container">' +
+      '<div class="post-meta-bar">' +
+        '<span class="post-cat">' + esc(p.category||'News') + '</span>' +
+        '<span class="post-date">' + date + '</span>' +
+        '<span class="post-readtime">' + readTime + ' min read</span>' +
+      '</div>' +
+      '<h1 class="post-title">' + esc(p.title) + '</h1>' +
+      '<hr class="post-divider">' +
+    '</div></section>' +
+    '<section class="post-body-wrap"><div class="container">' +
+      '<div class="post-layout">' +
+        '<div class="post-body">' + (p.body || '') + '</div>' +
+        '<aside class="post-sidebar">' +
+          '<div class="sidebar-card">' +
+            '<h4>Support the Campaign</h4>' +
+            '<p>Join thousands of Edo people standing with Pastor (Dr.) Osagie Ize-Iyamu for Senate 2027.</p>' +
+            '<a class="sidebar-btn" href="index.html#join">Join the Movement</a>' +
+            '<a class="sidebar-btn-outline" href="index.html#donate">Donate Today</a>' +
+          '</div>' +
+          '<div class="sidebar-card">' +
+            '<h4>The Simple Agenda</h4>' +
+            '<p>Read Pastor POI\'s full legislative agenda for Edo South — specific, measurable, and people-centred.</p>' +
+            '<a class="sidebar-btn" href="POI-Simple-Agenda.pdf" download="POI-Simple-Agenda.pdf">Download Agenda</a>' +
+          '</div>' +
+        '</aside>' +
+      '</div>' +
+    '</div></section>';
+}
+
+async function loadRelated(currentId) {
+  try {
+    var res = await sb.from('posts')
+      .select('title,slug,excerpt,image_url,category')
+      .eq('published', true)
+      .neq('id', currentId)
+      .order('published_at', { ascending: false })
+      .limit(3);
+    var posts = res.data || [];
+    if (!posts.length) return;
+    document.getElementById('related-section').style.display = 'block';
+    document.getElementById('related-grid').innerHTML = posts.map(function(p) {
+      var img = p.image_url ? ' style="background-image:url(\'' + esc(p.image_url) + '\')"' : '';
+      return '<a class="rel-card" href="post.html?id=' + esc(p.slug) + '">' +
+        '<div class="rel-img"><div class="rel-img-inner"' + img + '></div></div>' +
+        '<div class="rel-body">' +
+          '<div class="rel-cat">' + esc(p.category||'News') + '</div>' +
+          '<div class="rel-title">' + esc(p.title) + '</div>' +
+        '</div></a>';
+    }).join('');
+  } catch(e) {}
+}
+
+function showError(msg, linkText) {
+  document.getElementById('post-hero-wrap').innerHTML = '<div class="post-hero-no-img"></div>';
+  document.getElementById('post-content-wrap').innerHTML =
+    '<section class="post-body-wrap"><div class="container"><div class="post-error">' +
+      '<h2>' + msg + '</h2>' +
+      (linkText ? '<a href="blog.html" style="color:var(--green);text-decoration:underline">' + linkText + '</a>' : '') +
+    '</div></div></section>';
+}
+
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+window.addEventListener('scroll', function() {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 40);
+}, { passive: true });
+
+var burger = document.getElementById('nav-burger');
+var mob = document.getElementById('mobile-menu');
+burger.addEventListener('click', function() {
+  burger.classList.toggle('open');
+  mob.classList.toggle('open');
+  document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : '';
+});
+document.querySelectorAll('.mobile-menu a').forEach(function(el) {
+  el.addEventListener('click', function() {
+    burger.classList.remove('open');
+    mob.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+</script>
+</body>
+</html>
